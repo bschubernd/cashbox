@@ -1,0 +1,27 @@
+Source: cashbox
+Section: math
+Priority: optional
+Maintainer: Bernd Schumacher <bernd@bschu.de>
+Rules-Requires-Root: binary-targets
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3,
+ blueprint-compiler
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/debian/cashbox
+Vcs-Git: https://salsa.debian.org/debian/cashbox.git
+
+Package: cashbox
+Architecture: all
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ ${python3:Depends},
+ python3,
+ python3-gi
+Description: cashbox - calculate cost of articles
+ cashbox is a Gtk4 app to calculate cost of articles
+ it can be used by small clubs on a celebration,
+ to memorise the cost of sold articles
+ and calculate the price and change.

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="EditPricelistWidget" parent="GtkBox">
+    <property name="orientation">1</property>
+    <signal name="map" handler="on_map_all"/>
+    <signal name="unmap" handler="on_unmap_all"/>
+    <child>
+      <object class="GtkBox">
+        <child>
+          <object class="GtkMenuButton">
+            <property name="icon-name">open-menu-symbolic</property>
+            <property name="menu-model">my_menu</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="hexpand">true</property>
+            <child>
+              <object class="GtkLabel" id="error"></object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="vexpand">true</property>
+        <child>
+          <object class="GtkTextView" id="textview"></object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <menu id="my_menu">
+    <submenu>
+      <attribute name="label" translatable="true">File</attribute>
+      <item>
+        <attribute name="label" translatable="true">Load</attribute>
+        <attribute name="action">win.load</attribute>
+        <attribute name="icon">open-menu-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="true">Append</attribute>
+        <attribute name="action">win.append</attribute>
+        <attribute name="icon">document-new-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="true">Save</attribute>
+        <attribute name="action">win.save</attribute>
+        <attribute name="icon">document-new-symbolic</attribute>
+      </item>
+    </submenu>
+    <item>
+      <attribute name="label" translatable="true">Undo</attribute>
+      <attribute name="action">win.undo</attribute>
+      <attribute name="icon">document-new-symbolic</attribute>
+    </item>
+  </menu>
+  <object class="GtkFileFilter" id="cashbox_file_filter">
+    <property name="name">cashbox pricelists</property>
+    <mime-types>
+      <mime-type>application/cashbox</mime-type>
+      <mime-type>text/plain</mime-type>
+    </mime-types>
+  </object>
+  <object class="GtkFileDialog" id="file_dialog">
+    <property name="default-filter">cashbox_file_filter</property>
+  </object>
+  <object class="GtkTextTag" id="red_tag">
+    <property name="background">red</property>
+  </object>
+  <object class="GtkTextTag" id="green_tag">
+    <property name="background">green</property>
+  </object>
+  <object class="GtkTextTag" id="orange_tag">
+    <property name="background">orange</property>
+  </object>
+</interface>

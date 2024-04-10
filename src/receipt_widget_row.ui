@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="ReceiptWidgetRow" parent="GtkBox">
+    <child>
+      <object class="AdwActionRow" id="action_row">
+        <property name="name">receipt</property>
+        <property name="hexpand">true</property>
+        <property name="title">article name placeholder</property>
+        <child type="suffix">
+          <object class="GtkBox">
+            <child>
+              <object class="GtkLabel" id="count_label">
+                <property name="label">count placeholder</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="label"> * </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="price_label">
+                <property name="label">price placeholder</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="label"> = </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="sum_label">
+                <property name="label">sum placeholder</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

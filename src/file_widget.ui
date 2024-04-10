@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="FileWidget" parent="GtkBox">
+    <property name="orientation">1</property>
+    <property name="margin-bottom">6</property>
+    <property name="margin-start">6</property>
+    <property name="spacing">6</property>
+    <property name="width-request">300</property>
+    <child>
+      <object class="GtkButton" id="load_button">
+        <property name="label">load</property>
+        <signal name="clicked" handler="on_load"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton" id="save_button">
+        <property name="label">save</property>
+        <signal name="clicked" handler="on_save"/>
+      </object>
+    </child>
+  </template>
+  <object class="GtkFileDialog" id="file_dialog"></object>
+</interface>
