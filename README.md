@@ -1,8 +1,8 @@
 # cashbox - calculate cost of articles
-cashbox is a Gtk4 app to calculate cost of articles
-it can be used by small clubs on a celebration,
+cashbox is a Gtk4 app to calculate cost of articles.
+It can be used by small clubs on a celebration,
 to memorise the cost of sold articles
-and calculate the price and change.
+and to calculate the price and change.
 
 ## main windows
  * Pricelist - edit list of articles (name, price and optional count)
@@ -15,10 +15,10 @@ and calculate the price and change.
 2. edit price-lsit with cashbox-Pricelist
  * empty lines in the price-list are ignored
  * each line represents one article
- * each line has the format: <name> <price> [<count>]
- * <name> can have spaces
- * <price> = digits[(.,)2-digits][<currency>]
- * <name> must be unique
+ * each line has the format: `<name> <price> [<count>]`
+ * `<name>` can have spaces but must be unique.
+ * `<price>` must be one ore more digits followed by a decimal separator and 2 decimal places
+ * `<count>` must be one or more digits and is optional.
 
 3. select, deselect or modify count of articles with cashbox-Sale
 
