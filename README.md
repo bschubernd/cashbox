@@ -23,3 +23,22 @@ and to calculate the price and change.
 3. select, deselect or modify count of articles with cashbox-Sale
 
 4. present cost of articles and calculate change
+
+# pictures
+
+
+![about cashbox](pics/about-details.png)
+
+![pricelist empty](pics/pricelist-empty.png)
+
+![pricelist help workflow](pics/pricelist-help-workflow.png)
+
+![pricelist with data](pics/pricelist-correct.png)
+
+![sale select](pics/Sale-select.png)
+
+![sale inclrease count ](pics/sale-increase-count.png)
+
+![receipt sum](pics/receipt-sum.png)
+
+![receipt show return](pics/receipt-show-return.png)
