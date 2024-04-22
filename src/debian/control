@@ -20,8 +20,7 @@ Depends:
  ${python3:Depends},
  python3,
  python3-gi
-Description: cashbox - calculate cost of articles
- cashbox is a Gtk4 app to calculate cost of articles
- it can be used by small clubs on a celebration,
- to memorise the cost of sold articles
- and calculate the price and change.
+Description: cashbox - memorise cost and calculate price of articles
+ cashbox memorises the cost of articles and calculates the total price and
+ change. It is intended for small clubs on a celebration, where members are
+ not experienced in memorizing prices and doing mental arithmetic.

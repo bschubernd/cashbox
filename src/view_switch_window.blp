@@ -29,7 +29,6 @@ template $ViewSwitchWindow : Adw.ApplicationWindow {
   width-request: 360;
   height-request: 360;
 
-  title: 'cashbox';
   Adw.Breakpoint {
     condition ('max-width: 450')
     setters {
@@ -58,5 +57,5 @@ template $ViewSwitchWindow : Adw.ApplicationWindow {
 }
 
 Label title_widget {
-  label: 'cashbox';
+  label: _('cashbox');
 }

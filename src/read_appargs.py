@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# read_appargs.py - handle global configuration data for cashbox
+# read_appargs.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -54,7 +54,7 @@ def init_appargs():
 
     # set default opts
     appargs["application_id"] = "de.bschu.cashbox"
-    appargs["application_version"] = "0.1"
+    appargs["application_version"] = "0.2"
     appargs["user_app_dir"] = os.path.join(GLib.get_user_data_dir(), appargs.application_id)
     appargs["system_app_dir"] = os.path.join("/", "usr", "share", "cashbox")
     appargs["csspath"] = os.path.join(appargs.system_app_dir, "cashbox.css")
@@ -103,7 +103,7 @@ if __name__ == '__main__':
     import gi
     gi.require_version('Gtk', '4.0')
     gi.require_version(namespace='Adw', version='1')
-    from gi.repository import Adw, Gtk, Gio, GLib, GObject
+    from gi.repository import Adw, Gio
     import cashbox.read_appargs
 
     class App(Adw.Application):
@@ -135,7 +135,7 @@ if __name__ == '__main__':
             for i in appargs.keys():
                 print(f"appargs[{i}]=<{appargs[i]}>")
             print(f"appargs.csspath=<{appargs.csspath}>")
-            assert(appargs.currency == "Dollar")
+            assert appargs.currency == "Dollar"
 
     app = App()
     app.run(sys.argv)

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# file_widget.py - load and save files for cashbox
+# file_widget.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -24,7 +24,7 @@
 
 import os, sys, re, gi
 gi.require_version(namespace='Adw', version='1')
-from gi.repository import Adw, Gtk, GObject
+from gi.repository import Adw, Gtk
 dir1 = os.path.dirname(os.path.realpath(__file__))
 dir2 = os.path.dirname(dir1)
 sys.path.append(dir2)
@@ -45,26 +45,19 @@ class FileWidget(Gtk.Box):
 
     @Gtk.Template.Callback()
     def on_load(self, button):
-        #print("on_load")
         self.file_dialog.open(None, None, self.load_callback)
 
     def load_callback(self, gtk_file_dialog, g_task):
         g_local_file=gtk_file_dialog.open_finish(g_task)
-        #print("callback called g_local_file.get_path()=<%s>"%(g_local_file.get_path()))
-        #print("load_callback sale=<%s>"% self.sale)
         with open(g_local_file.get_path(), 'r') as file:
             data = file.read()
-        #print("load_callback data=<%s>"%data)
 
     @Gtk.Template.Callback()
     def on_save(self, button):
-        #print("on_save")
         self.file_dialog.save(None, None, self.save_callback)
 
     def save_callback(self, gtk_file_dialog, g_task):
-        #print("save_callback called gtk_file_diallog=<%s> gio_task=<%s>"%(gtk_file_dialog,g_task))
         g_local_file=gtk_file_dialog.save_finish(g_task)
-        #print("save_callback called g_local_file.get_path()=<%s>"%(g_local_file.get_path()))
         with open(g_local_file.get_path(), 'w') as file:
             file.write(self.sale.text())
 

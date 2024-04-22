@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# utils.py - utils for cashbox
+# utils.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -24,10 +24,7 @@
 
 import gi, os, sys
 gi.require_version(namespace='Adw', version='1')
-from gi.repository import Adw, Gtk, Gio, GLib, GObject
-dir1 = os.path.dirname(os.path.realpath(__file__))
-dir2 = os.path.dirname(dir1)
-sys.path.append(dir1)
+from gi.repository import Gio
 
 def print_widget(w, level=1):
     """ print widgets
@@ -41,11 +38,11 @@ def print_widget(w, level=1):
 
     """
 
-    if w != None:
+    if w is None:
         txt=w.get_name()
         if txt == "GtkLabel":
-            txt="%s: %s" % (txt, w.get_label())
-        print("%s <%s>" % ("-"*level, txt))
+            txt=f"{txt}: {w.get_label()}"
+        print("{'-'*level} <{txt}>")
         level=level+1
         w=w.get_first_child()
         while w:
@@ -54,8 +51,8 @@ def print_widget(w, level=1):
 
 #def reduce_window_size(window, x=720, y=1440):
 def reduce_window_size(window, x=350, y=600):
-     window.props.default_width = x
-     window.props.default_height = y
+    window.props.default_width = x
+    window.props.default_height = y
 
 if __name__ == '__main__':
     import doctest
@@ -67,3 +64,8 @@ def eprint(*args, **kwargs):
 def err(msg, retcode=1):
     eprint(f"Error: {msg}")
     sys.exit(retcode)
+
+def create_action(window_or_application, name, function):
+    action = Gio.SimpleAction.new(name, None)
+    action.connect("activate", function)
+    window_or_application.add_action(action)

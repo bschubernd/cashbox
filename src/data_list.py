@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# data_list.py - handle lists with Gio.ListStore for cashbox
+# data_list.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -22,9 +22,9 @@
 #   On Debian systems, the complete text of the GNU General
 #   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
-import os, sys, re, gi
+import os, re, gi
 gi.require_version(namespace='Adw', version='1')
-from gi.repository import Adw, Gtk, GObject, Gio, GLib
+from gi.repository import GObject, Gio
 
 class DataList():
     """
@@ -38,8 +38,8 @@ class DataList():
     or have an added first data that represents a text (line1).
 
     Advantages:
-      * If one DataItem is changed in any DataList it is automatically changed in all other DataLists.
-      If the change of a DataItem
+      * If one DataItem is changed in any DataList, it is automatically changed
+        in all other DataLists.
     """
 
     def __init__(self):
@@ -72,7 +72,6 @@ class DataList():
         return plus
 
     def on_item_changed(self, data, field):
-        #print(f"on_item_changed: data=<{data}> field=<{field}>")
         self.add_item_to_plus_list_where_needed(data)
 
     def add_item_to_plus_list_where_needed(self, item):
@@ -114,7 +113,7 @@ class DataList():
         '[first,2,4,5,6,8]'
 
         """
-        if order_list==None:
+        if order_list is None:
             order_list=self.main_list
 
         is_break=False
@@ -132,7 +131,7 @@ class DataList():
                 if order_item == item:
                     is_break=True
                     break
-                elif order_item == plus_item:
+                if order_item == plus_item:
                     break
                 order_i+=1
             if is_break:
@@ -141,7 +140,6 @@ class DataList():
         plus_list.insert(plus_i, item)
 
     def on_data_list_changed(self, list_store, position, removed, added):
-        #print(f"on_data_list_changed: position=<{position}> removed=<{removed}> added=<{added}>")
         assert added==1 or removed==1
         if added==1:
             item = self.main_list[position]
@@ -149,11 +147,10 @@ class DataList():
             self.add_item_to_plus_list_where_needed(item)
         elif removed==1:
             item = self.main_list_last[position]
-            #print(f"on_data_list_changed: will delete item=<{item}>")
             self.del_item_from_plus_list_where_needed(item)
 
     def clear(self):
-        for i in range(0, len(self.main_list)):
+        for _ in range(0, len(self.main_list)):
             # currently only deleting one item at once is allowed by on_data_list_changed
             self.main_list.remove(0)
 
@@ -176,10 +173,9 @@ if __name__ == '__main__':
 
         def __str__(self):
             if self.count >=0:
-                return (f"({self.name},{self.count})")
-            else:
-                # used for DataList.plus_lists to display item1 in a drop down box
-                return (f"{self.name}")
+                return f"({self.name},{self.count})"
+            # used for DataList.plus_lists to display item1 in a drop down box
+            return f"{self.name}"
 
     def is_picked(item):
         return item.count > 0

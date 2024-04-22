@@ -1,4 +1,4 @@
-// sale_widget.blp - used by sale_widget.py
+// receipt_widget.blp - used by receipt_widget.py
 //
 // Copyright:
 //   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -23,37 +23,38 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $SaleWidget : Gtk.Box {
-  Gtk.Box sale_widget_box {
+// margin-start: 12; margin-end: 12;
+// margin-bottom: 12; margin-top: 12;
+// spacing: 12;
+// vexpand: true;
+
+template $ReceiptWidgetDialog: Gtk.Box {
+}
+
+Adw.Dialog statistic_dialog {
+  title: "statistic dialog";
+  Gtk.Box {
     orientation: vertical;
-    margin-top: 0;
-    margin-end: 0;
-    margin-bottom: 0;
-    margin-start: 0;
     spacing: 12;
+    margin-start: 12;
+    margin-end: 12;
+    Grid {
+      column-spacing: 12;
 
-    Gtk.Box sale_widget_menu_box {
-      spacing: 12;
-      MenuButton {
-        icon-name: "open-menu-symbolic";
-        menu-model: my_menu;
-      }
+      Label { layout { column: 0; row: 0; } label: _("session"); }
+      Label session { layout { column: 1; row: 0; } }
+
+      Label { layout { column: 0; row: 1; } label: _("sales"); }
+      Label sales { layout { column: 1; row: 1; } }
+
+      Label { layout { column: 0; row: 2; } label: _("revenue"); }
+      Label revenue { layout { column: 1; row: 2; } }
+    }
+
+    Gtk.Button { 
+      label: "Ok"; 
+      clicked => $on_statistic_dialog_end();
     }
   }
 }
 
-menu my_menu {
-  submenu {
-    label: _("Help");
-    item {
-      label: _("About");
-      action: "app.about";
-      icon: "document-new-symbolic";
-    }
-    item {
-      label: _("Sale Help");
-      action: "win.help_sale";
-      icon: "document-new-symbolic";
-    }
-  }
-}

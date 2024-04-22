@@ -49,7 +49,7 @@ template $ReceiptWidget: Gtk.Box {
           margin-end: 12;
 
           Gtk.Entry money_sum {
-            placeholder-text: "sum";
+            placeholder-text: _("sum");
             map => $on_map_sum() after;
             sensitive: false;
           }
@@ -57,22 +57,23 @@ template $ReceiptWidget: Gtk.Box {
           Gtk.Label { label: " = "; }
 
           Gtk.Entry money_in {
-            placeholder-text: "paid";
+            placeholder-text: _("paid");
             // max-length: 6;
           }
 
           Gtk.Label { label: " - "; }
 
           Gtk.Entry money_out {
-            placeholder-text: "remain";
+            placeholder-text: _("remain");
             sensitive: false;
           }
         }
       }
 
-      Gtk.Button {
+      Gtk.Button ok_button {
         label: "ok";
         clicked => $on_save_receipt();
+        sensitive: false;
       }
     }
 
@@ -93,17 +94,31 @@ template $ReceiptWidget: Gtk.Box {
 }
 
 menu my_menu {
+  item {
+    label: _("change session dir");
+    action: "win.chng_session_dir";
+    icon: "open-menu-symbolic";
+  }
+  item {
+    label: _("Statistic");
+    action: "win.show_statistic";
+    icon: "open-menu-symbolic";
+  }
   submenu {
-    label: _("Tools");
+    label: _("Help");
     item {
-      label: _("Statistic");
-      action: "win.TODO";
-      icon: "open-menu-symbolic";
+      label: _("About");
+      action: "app.about";
+      icon: "document-new-symbolic";
     }
     item {
-      label: _("Show");
-      action: "win.TODO";
-      icon: "open-menu-symbolic";
+      label: _("Receipt Help");
+      action: "win.help_receipt";
+      icon: "document-new-symbolic";
     }
   }
+}
+
+Gtk.FileDialog file_dialog {
+  title: "change session directory";
 }

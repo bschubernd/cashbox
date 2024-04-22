@@ -1,4 +1,4 @@
-VERSION_BIN = ${shell src/cashbox.py --version 2>/dev/null}
+VERSION_BIN = ${shell sed -E -n -e "s/.*application_version.*= \"(\S+)\"$$/\1/p" src/read_appargs.py}
 VERSION_DEB = ${shell head -1 src/debian/changelog | sed "s/.*(//" | sed "s/).*//"}
 
 all	: check_version cashbox_*.deb

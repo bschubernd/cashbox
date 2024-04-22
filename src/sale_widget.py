@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# sale_widget.py - handle sale for cashbox
+# sale_widget.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -25,47 +25,64 @@
 import gi, sys, os
 gi.require_version('Adw', '1')
 gi.require_version('Gtk', '4.0')
-from gi.repository import Adw, Gio, GObject, Gtk
+from gi.repository import Gtk
 dir1 = os.path.dirname(os.path.realpath(__file__))
 dir2 = os.path.dirname(dir1)
 sys.path.append(dir1)
 from cashbox.pick_widget import PickWidget
 from cashbox.drop_down_widget import DropDownWidget
+from cashbox.utils import create_action
+from cashbox.dialog_widget import DialogWidget
+from cashbox.locale_utils import _, f
 
 
-@Gtk.Template(filename='%s/sale_widget.ui' % dir1)
+@Gtk.Template(filename=f'{dir1}/sale_widget.ui')
 class SaleWidget(Gtk.Box):
     __gtype_name__ = 'SaleWidget'
+    sale_widget_menu_box = Gtk.Template.Child()
     sale_widget_box = Gtk.Template.Child()
 
     def do_pick_item(self, dropdown, b):
         if dropdown.get_selected() > 0:
             article = dropdown.get_selected_item()
-            print(f"do_pick_item: article=<{article}>")
             dropdown.set_selected(0)
             article.count=1
 
-    def __init__(self, sale, **kwargs):
+    def __init__(self, sale, win, **kwargs):
         super().__init__(**kwargs)
 
         self.sale=sale
+        self.win=win
 
         drop_down_widget = DropDownWidget(sale.drop_unpicked)
         drop_down = drop_down_widget.get_drop_down()
 
         drop_down.connect("notify::selected-item", self.do_pick_item)
-        self.sale_widget_box.append(drop_down_widget)
+        self.sale_widget_menu_box.append(drop_down_widget)
 
         pick = PickWidget(sale)
         self.sale_widget_box.append(pick)
 
+        create_action(win, "help_sale", self.on_help_sale)
+
+    def on_help_sale(self, action, _param):
+        d = DialogWidget()
+        win=self
+        d.help_dialog(win, _("Sale Help"), f(_("""\
+To sell {d.as_}, they can be selected from a drop down menu. They will then \
+be shown in the order selected in the {d.S} widget, where the {d.c} to be sold \
+can be adjusted.
+
+The {d.as_} in the drop down menu always have the same order as in the {d.Pl}. \
+If some {d.as_} are sold more often than others, they may be moved to the \
+beginning in the {d.Pl}, to be able to find and select them faster in future.
+""")))
+
 
 if __name__ == '__main__':
 
-    import sys
-    from app import App, MinWindow
-    from article import Article, Sale
-    from cashbox.read_appargs import read_appargs, appargs
+    from cashbox.app import App, MinWindow
+    from cashbox.article import Article, Sale
 
     class SaleWindow(MinWindow):
 
@@ -77,8 +94,8 @@ if __name__ == '__main__':
             article = [("Banana",110,0), ("Apple",200,0), ("Strawberry",250,0),
                        ("Pear",335,4), ("Watermelon",100,5), ("Blueberry",200,6)]
 
-            for f in article:
-                sale.main_list.append(Article( f[0], f[1], f[2] ))
+            for a in article:
+                sale.main_list.append(Article( a[0], a[1], a[2] ))
 
             box = Gtk.Box(spacing=12, hexpand=True, vexpand=True)
             box.props.margin_start = 12
@@ -87,7 +104,8 @@ if __name__ == '__main__':
             box.props.margin_bottom = 6
             self.set_content(box)
 
-            sale_widget=SaleWidget(sale)
+            sale_widget=SaleWidget(sale, win=self)
+#           sale_widget=SaleWidget(sale)
             box.append(sale_widget)
 
 

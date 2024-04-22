@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# article.py - handle data for cashbox
+# article.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -22,8 +22,7 @@
 #   On Debian systems, the complete text of the GNU General
 #   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
-import gi, os, sys
-import re
+import gi, os, sys, re
 gi.require_version(namespace='Adw', version='1')
 from gi.repository import Adw, Gtk, Gio, GLib, GObject
 dir1 = os.path.dirname(os.path.realpath(__file__))
@@ -31,6 +30,7 @@ dir2 = os.path.dirname(dir1)
 sys.path.append(dir2)
 from cashbox.read_appargs import read_appargs, appargs
 from cashbox.data_list import DataList
+from cashbox.locale_utils import _, f
 
 def cent2str(cents):
     return f"{cents//appargs.cents}{appargs.separator}{cents%appargs.cents:0{appargs.digits}.0f}"
@@ -38,7 +38,6 @@ def cent2str(cents):
 def str2cent(txt, allow_sloppy=False):
     ret=0
     if allow_sloppy:
-        txt=txt
         txt=re.sub(r"[.,]", appargs.separator, txt)
     try:
         price=float(txt)
@@ -61,7 +60,7 @@ class Article(GObject.Object):
         self.count = count
 
     def __str__(self):
-        return (f"({self.name},{cent2str(self.price)},{self.count})")
+        return f"({self.name},{cent2str(self.price)},{self.count})"
 
     def text(self):
         if self.count:
@@ -70,6 +69,31 @@ class Article(GObject.Object):
             ret=f"{self.name} {cent2str(self.price)}"
         return ret
 
+class Comment(GObject.Object):
+    comment = GObject.Property(type=str)
+
+    def __str__(self):
+        return f"{self.comment}"
+
+    def __init__(self, comment):
+        super().__init__()
+        self.comment = comment
+
+    def text(self):
+        return str(self)
+
+class DropDownHead(GObject.Object):
+    drop_down_head = GObject.Property(type=str)
+
+    def __str__(self):
+        return f"DropDownHead=<{self.drop_down_head}>"
+
+    def __init__(self, drop_down_head):
+        super().__init__()
+        self.drop_down_head = drop_down_head
+
+    def text(self):
+        return str(self)
 
 class Sale(DataList):
 
@@ -80,21 +104,27 @@ class Sale(DataList):
         self.add_plus_list(pick = self.is_picked, selfname="picked") # self.picked
         self.add_plus_list(pick = self.is_unpicked, selfname="unpicked") # self.unpicked
         self.add_plus_list(pick = self.is_unpicked, sort=True,
-                           item1=Article("select article", 0, 0),
+                           item1=DropDownHead(_("select article")),
                            selfname="drop_unpicked") # self.drop_unpicked
 
     def is_picked(self, item):
-        return item.count > 0
+        ret = False
+        if type(item) is Article:
+            ret = item.count > 0
+        return ret
 
     def is_unpicked(self, item):
-        return not self.is_picked(item)
+        ret = False
+        if type(item) is Article:
+            ret = item.count == 0
+        return ret
 
     def text(self):
         """
         This will make Sale ediable as text.
         All relevant information is included.
         """
-        return "\n".join([article.text() for article in self.main_list])
+        return "\n".join([data.text() for data in self.main_list])
 
     def get_article(self, name, picked=None):
         """
@@ -105,17 +135,18 @@ class Sale(DataList):
           True: picked
         """
         found=None
-        for article in self.main_list:
-            if article.name==name:
-                if picked==True:
-                    if article.count>0:
-                        found=article
-                elif picked==False:
-                    if article.count==0:
-                        found=article
-                elif picked==None:
-                    found=article
-                break
+        for data in self.main_list:
+            if isinstance(data, Article):
+                if data.name==name:
+                    if picked  is True:
+                        if data.count>0:
+                            found=data
+                    elif picked is False:
+                        if data.count==0:
+                            found=data
+                    elif picked is None:
+                        found=data
+                    break
         return found
 
     def count_zero(self):
@@ -130,15 +161,22 @@ if __name__ == '__main__':
 
     sale = Sale()
 
-    fruits = [("Banana",110,1), ("Apple",200,2), ("Strawberry",250,3), ("Pear",335,4), ("Watermelon",100,5), ("Blueberry",200,6)]
-    for f in fruits:
-        sale.main_list.append( Article(f[0], f[1], f[2]) )
-    assert f"{sale}" == "[(Banana,1.10,1),(Apple,2.00,2),(Strawberry,2.50,3),(Pear,3.35,4),(Watermelon,1.00,5),(Blueberry,2.00,6)]"
-    assert f"{sale.text()}" == """Banana 1.10 1
+    for d in [Comment("one two three"), Article("Banana",110,1),
+              Article("Apple",200,2), Article("Strawberry",250,3),
+              Article("Pear",335,4), Article("Watermelon",100,5),
+              Comment("four,five six"), Article("Blueberry",200,6)]:
+        print(f"adding <{d}>")
+        sale.main_list.append( d )
+    assert f"{sale}" == "[one two three,(Banana,1.10,1),(Apple,2.00,2)," + \
+                        "(Strawberry,2.50,3),(Pear,3.35,4)," + \
+                        "(Watermelon,1.00,5),four,five six,(Blueberry,2.00,6)]"
+    assert f"{sale.text()}" == """one two three
+Banana 1.10 1
 Apple 2.00 2
 Strawberry 2.50 3
 Pear 3.35 4
 Watermelon 1.00 5
+four,five six
 Blueberry 2.00 6"""
 
     # next 2 lines will normally be done by a widget

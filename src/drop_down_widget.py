@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-import os, gi, sys
 
-# drop_down_widget.py - handle DropDown for cashbox
+# drop_down_widget.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -23,15 +22,17 @@ import os, gi, sys
 #   On Debian systems, the complete text of the GNU General
 #   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
+import os, gi, sys
 gi.require_version('Adw', '1')
 gi.require_version('Gtk', '4.0')
-from gi.repository import Adw, Gio, GObject, Gtk
+from gi.repository import GObject, Gtk
 dir1 = os.path.dirname(os.path.realpath(__file__))
 dir2 = os.path.dirname(dir1)
 sys.path.append(dir2)
-from cashbox.article import Article, Sale, cent2str
+from cashbox.article import Article, DropDownHead, Sale, cent2str
+from cashbox.locale_utils import _, f
 
-@Gtk.Template(filename='%s/drop_down_widget_row.ui' % dir1)
+@Gtk.Template(filename=f'{dir1}/drop_down_widget_row.ui')
 class DropDownWidgetRow(Gtk.Box):
     __gtype_name__ = 'DropDownWidgetRow'
     w_name = Gtk.Template.Child()
@@ -63,7 +64,6 @@ class DropDownWidget(Gtk.Box):
         return self.drop_down
 
     def _calc_sensitive(self, a, b):
-        print(f"transform_to a=<{a}> b=<{b}>")
         ret = False
         if b > 1:
             ret = True
@@ -77,23 +77,23 @@ class DropDownWidget(Gtk.Box):
         box = list_item.get_child()
         w_name = box.get_first_child()
         w_price = w_name.get_next_sibling()
-        article = list_item.get_item()
-        w_name.set_text(article.name)
-        p=article.price
-        if p:
-            w_price.set_text(cent2str(article.price))
+        data = list_item.get_item()
+        if type(data) == Article:
+            w_name.set_text(data.name)
+            w_price.set_text(cent2str(data.price))
         else:
+            assert type(data) == DropDownHead
+            w_name.set_text(data.drop_down_head)
             w_price.set_text("")
 
 if __name__ == '__main__':
 
     import sys
-    from cashbox.app import App
     dir1 = os.path.dirname(os.path.realpath(__file__))
     dir2 = os.path.dirname(dir1)
     sys.path.append(dir2)
     from cashbox.read_appargs import read_appargs, appargs
-    from app import App, MinWindow
+    from cashbox.app import App, MinWindow
 
     class DropDownWindow(MinWindow):
 

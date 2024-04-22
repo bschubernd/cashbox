@@ -1,0 +1,338 @@
+# German translations for gtk package
+# German translation for gtk.
+# Copyright (C) 2024 THE gtk'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gtk package.
+# Bernd Schumacher <bernd@bschu.de>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gtk 4-python\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-22 15:27+0200\n"
+"PO-Revision-Date: 2024-04-19 09:58+0200\n"
+"Last-Translator: Bernd Schumacher <bernd@bschu.de>\n"
+"Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cashbox.py:56 dialog_widget.py:60
+msgid "Pricelist"
+msgstr "Preisliste"
+
+#: cashbox.py:64 dialog_widget.py:62
+msgid "Sale"
+msgstr "Verkauf"
+
+#: cashbox.py:71 dialog_widget.py:61
+msgid "Receipt"
+msgstr "Quittung"
+
+#: app.py:93
+#, python-brace-format
+msgid ""
+"{d.C} memorises the cost of {d.as_} and calculates the total price and "
+"change. It is intended for small clubs on a celebration, where members are "
+"not experienced in memorizing prices and doing mental arithmetic.\n"
+"\n"
+"{d.C} consists of the 3 windows {d.Pl}, {d.S} and {d.R}, that can be "
+"switched as needed. {d.Pl} can add, delete or modify {d.as_}, {d.S} picks {d."
+"as_} to sell and {d.R} shows the total price of the choosen {d.as_}."
+msgstr ""
+"{d.C} merkt sich die {d.as_} Preise und errechnet den Gesamtpreis und das "
+"Wechselgeld. Es ist gedacht für Feiern in kleinen Vereinen, wo die "
+"Mitglieder nicht im Merken von Preisen und im Kopfrechnen geübt sind.\n"
+"\n"
+"{d.C} besteht aus den 3 Fenstern {d.Pl}, {d.S} und {d.R}, die beliebig "
+"gewechselt werden können. Mit {d.Pl} können {d.as_} hinzugefügt, gelöscht "
+"oder geänder werden, mit {d.S} können {d.as_} zum Verkauf ausgewählt werden "
+"und {d.R} zeigt den Gesamtpres der ausgewählten {d.as_}."
+
+#: article.py:107
+msgid "select article"
+msgstr "Artikel auswählen"
+
+#: dialog_widget.py:50
+msgid "article"
+msgstr "Artikel"
+
+#: dialog_widget.py:51
+msgid "articles"
+msgstr "Artikel"
+
+#: dialog_widget.py:52
+msgid "Articles"
+msgstr "Artikel"
+
+#: dialog_widget.py:53
+msgid "Cashbox"
+msgstr "Cashbox"
+
+#: dialog_widget.py:54
+msgid "count"
+msgstr "Anzahl"
+
+#: dialog_widget.py:55
+msgid "counts"
+msgstr "Anzahlen"
+
+#: dialog_widget.py:56
+msgid "name"
+msgstr "Name"
+
+#: dialog_widget.py:57
+msgid "names"
+msgstr "Namen"
+
+#: dialog_widget.py:58
+msgid "price"
+msgstr "Preis"
+
+#: dialog_widget.py:59
+msgid "prices"
+msgstr "Preise"
+
+#: dialog_widget.py:92
+msgid "hallo"
+msgstr "ei gute wie"
+
+#: dialog_widget.py:106
+msgid "test_help_dialog"
+msgstr "Test Hilfe Dialog"
+
+#: dialog_widget.py:110
+msgid "test_about"
+msgstr "Test über"
+
+#: dialog_widget.py:117
+#, python-brace-format
+msgid "one two three {d.As}"
+msgstr "eins zwei drei {d.As}"
+
+#: dialog_widget.py:123
+msgid "test_title"
+msgstr "Test Titel"
+
+#: dialog_widget.py:123
+#, python-brace-format
+msgid ""
+"one two three\n"
+"{d.As} can be listed with {d.n} and {d.p} in {d.Pl}."
+msgstr ""
+"eins zwei drei\n"
+"{d.As} können mit {d.n} und {d.p} in {d.Pl} gelistet werden."
+
+#: pricelist_widget.py:159
+#, python-brace-format
+msgid "name {name_to_long} chars to long"
+msgstr "Name ist {name_to_long} Zeichen zu lang"
+
+#: pricelist_widget.py:162
+msgid "name already exists"
+msgstr "Name existiert bereits"
+
+#: pricelist_widget.py:168
+msgid "no space after article name"
+msgstr "Leerzeichen fehlt hinter Name"
+
+#: pricelist_widget.py:170
+msgid "no article name"
+msgstr "Artikel Name fehlt"
+
+#: pricelist_widget.py:175
+msgid "bad optional count"
+msgstr "Optionale Anzahl fehlerhaft"
+
+#: pricelist_widget.py:178
+msgid "no price found"
+msgstr "Kein Preis gefunden"
+
+#: pricelist_widget.py:207
+msgid "please add lines with article and price"
+msgstr "Bitte Zeilen mit Artikel Name und Preis hinzufügen"
+
+#: pricelist_widget.py:293
+msgid "pricelist workflow"
+msgstr "Preislisten Ablauf"
+
+#: pricelist_widget.py:293
+#, python-brace-format
+msgid ""
+"{d.As} are listed in a text with {d.n} and {d.p} and an optional {d.c} in {d."
+"Pl}. This text can be directly edited. It can also contain blank lines and "
+"comments. The text can be saved, loaded and appended with with the hamburger "
+"file menu. The  hamburger menu has Undo and Redo buttons to return to a "
+"previous state.\n"
+"\n"
+"It is possible to enter all {d.as_} before starting with {d.S}, or to enter "
+"each {d.a} when it is sold, or a mixture of both methods.\n"
+"\n"
+"It may also be possible to make a photo of a table of prices, and to use ocr "
+"software to extract text from the photo, before running {d.C}. The text can "
+"then be loaded in {d.Pl}. Then {d.ns} and {d.ps} can be copied and pasted to "
+"the needed syntax."
+msgstr ""
+"{d.As} sind in der {d.Pl} als Text gelistet mit {d.n} und {d.p} und "
+"optionaler {d.c}. Der Text kann editiert werden. Er kann auch Leerzeilen und "
+"Kommentare enthalten. Mit dem Unterpunkt Datei im Hamburger Menu, kann Text "
+"gespeichert, geladen, und angefügt werden. Das Hamburger Menu bietet auch "
+"die Möglichkeit Änderungen rückgängig zu machen und wieder herzustellen.\n"
+"\n"
+"Mit dem Fenter {d.S} ist es möglich alle {d.as_} vor dem Verkaufsstart "
+"einzugeben, oder jeden {d.a} erst dann einzugeben wenn er verkauft wird, "
+"oder eine Mischung aus beidem.\n"
+"\n"
+"Es kann auch funktionieren noch vor dem Start von {d.C} ein Foto von einer "
+"Preisliste zu machen und dieses mit OCR Software zu einen Text zu wandeln. "
+"Der Text kann dann in die {d.Pl} geladen werden. Dann kann der Text mit Copy "
+"und Paste in den benötigten Syntax gebracht werden."
+
+#: pricelist_widget.py:310
+msgid "pricelist syntax"
+msgstr "Preislisten Syntax"
+
+#: pricelist_widget.py:310
+#, python-brace-format
+msgid ""
+"{d.Pl} mainly consists of a large text field, where a line can represents an "
+"{d.a}. Lines can also be empty or contain a comment.\n"
+"\n"
+"A line with an {d.a} contains a {d.n} and {d.p} and an optional {d.c} "
+"separated by spaces. Lines starting with '#' are comments. \n"
+"\n"
+"The {d.p} consists of digits followed by '.' or ',' and 2 additional digits. "
+"Text before the {d.p} is the {d.n}. The {d.p} may be followed by digits that "
+"represents a {d.c} to show how often the {d.a} is currently sold."
+msgstr ""
+"Die {d.Pl} besteht aus einem Text in dem jede Zeile einen {d.a} "
+"repräsentiert. Zeilen können auch leer sein oder einen Kommentar enthalten.\n"
+"\n"
+"Eine Zeile mit einem {d.a} enhtlält einen {d.n} und einen {d.p} und optional "
+"einen {d.c} getrennt durch Leerzeichen. Zeilen die mit einem '#' beginnen "
+"sind Kommentare. \n"
+"\n"
+"Ein {d.p} besteht aus Ziffern gefolgt von '.' or ',' und 2 weiteren Ziffern. "
+"Text vor dem {d.p} ist der {d.n}. Hinter dem {d.p} können optional Ziffern "
+"folgen, die als {d.c} zeigen wie oft der {d.a} gerade verkauft wird."
+
+#: receipt_widget.py:114 receipt_widget.ui:111
+msgid "Receipt Help"
+msgstr "Quittung Hilfe"
+
+#: receipt_widget.py:114
+#, python-brace-format
+msgid ""
+"In the {d.R} window the {d.p} to pay is shown. The paid amount can be "
+"entered and the return will be shown. With 'Ok' the sale will be saved and "
+"the selected {d.a} {d.cs} will be resetted for the next customer."
+msgstr ""
+"In dem {d.R} Fenseter wird der zu zahlende {d.p} gezeigt. Das gezahlge Geld "
+"kann einggeben werden um das Rückgeld anzeigen zu lassen. Mit 'Ok' wird der "
+"Verkauf gespeichert und die ausgewählten {d.a} {d.cs} werden für den "
+"nächsten Kunden zurückgesetzt."
+
+#: sale_widget.py:71 sale_widget.ui:41
+msgid "Sale Help"
+msgstr "Verkauf Hilfe"
+
+#: sale_widget.py:71
+#, python-brace-format
+msgid ""
+"To sell {d.as_}, they can be selected from a drop down menu. They will then "
+"be shown in the order selected in the {d.S} widget, where the {d.c} to be "
+"sold can be adjusted.\n"
+"\n"
+"The {d.as_} in the drop down menu always have the same order as in the {d."
+"Pl}. If some {d.as_} are sold more often than others, they may be moved to "
+"the beginning in the {d.Pl}, to be able to find and select them faster in "
+"future.\n"
+msgstr ""
+"Um {d.as_} zu verkaufen, kann man sie aus einem Drop Down Menu auswählen. "
+"Sie erscheinen dann in der selektierten Reihenfole im {d.S} Fenster, wo die "
+"zu verkaufende {d.c} angepasst werden kann.\n"
+"\n"
+"Die {d.as_} im Drop Down Menu haben immer die gleiche Reihenfolge wie in der "
+"{d.Pl}. Wenn manche {d.as_} häufiger verkauft werden als andere, können "
+"diese in der {d.Pl} an den Beginn verschoben werden, um sie in Zukunft "
+"schneller zu finden und auswählen zu können.\n"
+
+#: dialog_widget.ui:41 view_switch_window.ui:47
+msgid "cashbox"
+msgstr "cashbox - Geldkasette"
+
+#: edit_pricelist_widget.ui:37 pricelist_widget.ui:42
+msgid "File"
+msgstr "Datei"
+
+#: edit_pricelist_widget.ui:39 pricelist_widget.ui:44
+msgid "Load"
+msgstr "Laden"
+
+#: edit_pricelist_widget.ui:44 pricelist_widget.ui:49
+msgid "Append"
+msgstr "Anfügen"
+
+#: edit_pricelist_widget.ui:49 pricelist_widget.ui:54
+msgid "Save"
+msgstr "Speichern"
+
+#: edit_pricelist_widget.ui:55 pricelist_widget.ui:60
+msgid "Undo"
+msgstr "Ungetan machen"
+
+#: pricelist_widget.ui:65
+msgid "Redo"
+msgstr "Nochmals tun"
+
+#: pricelist_widget.ui:70 receipt_widget.ui:104 sale_widget.ui:34
+msgid "Help"
+msgstr "Hilfe"
+
+#: pricelist_widget.ui:72 receipt_widget.ui:106 sale_widget.ui:36
+msgid "About"
+msgstr "Über"
+
+#: pricelist_widget.ui:77
+msgid "Pricelist Workflow"
+msgstr "Preislisten Ablauf"
+
+#: pricelist_widget.ui:82
+msgid "Pricelist Syntax"
+msgstr "Preislisten Syntax"
+
+#: receipt_widget.ui:32
+msgid "sum"
+msgstr "Summe"
+
+#: receipt_widget.ui:44
+msgid "paid"
+msgstr "gezahlt"
+
+#: receipt_widget.ui:54
+msgid "remain"
+msgstr "Rückgeld"
+
+#: receipt_widget.ui:94
+msgid "change session dir"
+msgstr "ändere Sitzungs Verzeichnis"
+
+#: receipt_widget.ui:99
+msgid "Statistic"
+msgstr "Statistik"
+
+#: receipt_widget_dialog.ui:27
+msgid "session"
+msgstr "Sitzung"
+
+#: receipt_widget_dialog.ui:44
+msgid "sales"
+msgstr "Verkäufe"
+
+#: receipt_widget_dialog.ui:61
+msgid "revenue"
+msgstr "Einnahmen"
+
+#~ msgid "help"
+#~ msgstr "Hilfe"

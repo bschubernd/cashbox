@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# pick_widget.py - pick articles for cashbox
+# pick_widget.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -24,13 +24,14 @@
 
 import gi, os, sys
 gi.require_version(namespace='Adw', version='1')
-from gi.repository import Adw, Gtk, Gio, GLib, GObject
+from gi.repository import Gtk, GObject
 dir1 = os.path.dirname(os.path.realpath(__file__))
 dir2 = os.path.dirname(dir1)
 sys.path.append(dir1)
 from cashbox.utils import print_widget, reduce_window_size
 from cashbox.article import Article
 from cashbox.data_list import DataList
+from cashbox.locale_utils import _, f
 
 
 @Gtk.Template(filename='%s/pick_widget_row.ui' % dir1)
@@ -105,7 +106,7 @@ class PickWidget(Gtk.Box):
             spin_row.set_subtitle("%s" % (article.price))
 
 if __name__ == '__main__':
-    from app import App, MinWindow
+    from cashbox.app import App, MinWindow
     from cashbox.article import Article, Sale
     from cashbox.read_appargs import read_appargs, appargs
     from cashbox.read_css import read_css
@@ -140,8 +141,8 @@ if __name__ == '__main__':
             self.box.append(quit_button)
             quit_button.connect('clicked', self.quit_clicked)
 
-        def list_sale_clicked(self, list_button):
-            print("list_sale_clicked: sale=<%s>"% (self.sale))
+        def list_sale_clicked(self, _list_button):
+            print(f"list_sale_clicked: sale=<{self.sale}>")
 
         def quit_clicked(self, list_button):
             self.close()

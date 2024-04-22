@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# app.py - start cashbox application and handle command-line opptions
+# app.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -25,13 +25,15 @@
 import sys, gi, os
 gi.require_version('Gtk', '4.0')
 gi.require_version(namespace='Adw', version='1')
-from gi.repository import Adw, Gtk, Gio, GLib, GObject
+from gi.repository import Adw, Gtk, Gio, GLib
 dir1 = os.path.dirname(os.path.realpath(__file__))
 dir2 = os.path.dirname(dir1)
 sys.path.append(dir2)
-from cashbox.utils import err, reduce_window_size
+from cashbox.utils import reduce_window_size, create_action
 from cashbox.read_appargs import read_appargs, appargs
 from cashbox.read_css import read_css
+from cashbox.dialog_widget import DialogWidget
+from cashbox.locale_utils import _, f
 
 class MinWindow(Adw.ApplicationWindow):
 
@@ -39,7 +41,6 @@ class MinWindow(Adw.ApplicationWindow):
         super().__init__(*args, **kwargs)
 
         if hasattr(appargs, "t1") and appargs.t1:
-            print("MinWindow: t1")
             reduce_window_size(self)
 
 class App(Adw.Application):
@@ -48,6 +49,9 @@ class App(Adw.Application):
         super().__init__(*args, application_id=appargs.application_id,
                          flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE |
                          Gio.ApplicationFlags.HANDLES_OPEN, **kwargs)
+
+        application = self
+        create_action(application, "about", self.about_action)
 
         self.connect('activate', self.on_activate)
 
@@ -83,26 +87,50 @@ class App(Adw.Application):
         self.activate()
         return 0
 
+    def about_action(self, action, param):
+        d = DialogWidget()
+        win=self.get_active_window()
+        d.about_dialog(win, f(_("""\
+{d.C} memorises the cost of {d.as_} and calculates the total price and \
+change. It is intended for small clubs on a celebration, where members are \
+not experienced in memorizing prices and doing mental arithmetic.
+
+{d.C} consists of the 3 windows {d.Pl}, {d.S} and {d.R}, that can be switched \
+as needed. {d.Pl} can add, delete or modify {d.as_}, {d.S} picks {d.as_} to \
+sell and {d.R} shows the total price of the choosen {d.as_}.""")),
+            version=appargs.application_version)
+
 if __name__ == '__main__':
-    import sys
     gi.require_version('Gtk', '4.0')
     from gi.repository import Gtk, Adw
-
-    from app import App, MinWindow
 
     class MyMainWindow(MinWindow):
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
 
+            box= Gtk.Box()
+            self.set_content(box)
+
+            hamburger = Gtk.MenuButton()
+            hamburger.set_icon_name("open-menu-symbolic")
+            box.append(hamburger)
+
+            popover = Gtk.PopoverMenu()
+            hamburger.set_popover(popover)
+
+            menu = Gio.Menu.new()
+            menu.append("Show About Dialog", "app.about")
+            popover.set_menu_model(menu)
+
             button = Gtk.Button(label="click me")
-            self.set_content(button)
+            box.append(button)
             button.connect('clicked', self.clicked)
 
-            print("main appargs.digits=<%s>" % appargs.digits)
+            print(f"main appargs.digits=<{appargs.digits}>")
 
             for i in appargs.keys():
-                 print(f"<{i}>=<{appargs[i]}>")
+                print(f"<{i}>=<{appargs[i]}>")
 
         def clicked(self, button):
             print("clicked")

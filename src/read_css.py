@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# read_css.py - handle CSS files for cashbox
+# read_css.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -27,29 +27,26 @@ import sys, os
 import gi
 gi.require_version(namespace='Adw', version='1')
 gi.require_version(namespace='Adw', version='1')
-from gi.repository import Adw, Gtk, GObject, Gdk
-
+from gi.repository import Adw, Gtk, Gdk
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from cashbox.read_appargs import read_appargs, appargs
 
 def read_css():
 
-    cssProvider = Gtk.CssProvider()
-    cssProvider.load_from_path(appargs.csspath)
+    css_provider = Gtk.CssProvider()
+    css_provider.load_from_path(appargs.csspath)
 
     styleContext = Gtk.StyleContext
     display=Gdk.Display.get_default()
-    styleContext.add_provider_for_display(display, cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
+    styleContext.add_provider_for_display(display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
 if __name__ == '__main__':
 
     # test button
     #   should change color of label to red - defined in cashbox.css as "#invalid"
 
-    import sys
-    import gi
     gi.require_version(namespace='Adw', version='1')
-    from gi.repository import Adw, Gtk, GObject
+    from gi.repository import Adw, Gtk
     from app import App
 
     class CssWindow(Adw.Window):
@@ -68,7 +65,7 @@ if __name__ == '__main__':
 
             button.connect('clicked', self.clicked, label)
 
-        def clicked(self, button, label):
+        def clicked(self, _button, label):
             if label.get_name()=="invalid":
                 label.set_name("normal")
             else:

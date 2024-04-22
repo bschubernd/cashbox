@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# cashbox.py - main cashbox program 
+# cashbox.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -23,9 +23,8 @@
 #   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
 import sys, gi, os
-
 gi.require_version(namespace='Adw', version='1')
-from gi.repository import Adw, Gtk, Gio, GLib, GObject
+from gi.repository import Gtk
 sys.path.append("/usr/share/cashbox/python3")
 from cashbox.pick_widget import PickWidget
 from cashbox.article import Article, Sale
@@ -35,9 +34,10 @@ from cashbox.receipt_widget import ReceiptWidget
 from cashbox.read_css import read_css
 from cashbox.app import App, MinWindow
 from cashbox.file_widget import FileWidget
-from cashbox.edit_pricelist_widget import EditPricelistWidget
-
+from cashbox.pricelist_widget import PricelistWidget
+from cashbox.dialog_widget import DialogWidget
 from cashbox.read_appargs import read_appargs, appargs
+from cashbox.locale_utils import _, f
 
 class MyApp(App):
 
@@ -48,28 +48,28 @@ class MyApp(App):
         self.last_child_name=None
         self.sale = Sale()
 
-        # EditPricelistWidget
+        # PricelistWidget
         box=Gtk.Box(orientation=Gtk.Orientation.VERTICAL, margin_top=12,
                     margin_end=12, margin_bottom=12,margin_start=12,spacing=12)
-        self.edit_pricelist_widget = EditPricelistWidget(self.sale, win=win)
-        box.append(self.edit_pricelist_widget)
-        win.stack.add_titled(box, "Pricelist", "Pricelist")
+        self.pricelist_widget = PricelistWidget(self.sale, win=win)
+        box.append(self.pricelist_widget)
+        win.stack.add_titled(box, "Pricelist", _("Pricelist"))
 
         if appargs.moreargs:
-            self.edit_pricelist_widget.read_files(appargs.moreargs)
+            self.pricelist_widget.read_files(appargs.moreargs)
 
         # SaleWidget
         box=Gtk.Box(orientation=Gtk.Orientation.VERTICAL, margin_top=12,
                     margin_end=12, margin_bottom=12,margin_start=12,spacing=12)
-        win.stack.add_titled(box, "Sale", "Sale")
-        sale_widget = SaleWidget(self.sale)
+        win.stack.add_titled(box, "Sale", _("Sale"))
+        sale_widget = SaleWidget(self.sale, win=win)
         box.append(sale_widget)
 
         # ReceiptWidget
         box=Gtk.Box(orientation=Gtk.Orientation.VERTICAL, margin_top=12,
                     margin_end=12, margin_bottom=12,margin_start=12,spacing=12)
-        win.stack.add_titled(box, "Receipt", "Receipt")
-        receipt_widget = ReceiptWidget(self.sale)
+        win.stack.add_titled(box, "Receipt", _("Receipt"))
+        receipt_widget = ReceiptWidget(self.sale, win=win)
         box.append(receipt_widget)
 
         win.present()

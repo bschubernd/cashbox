@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# view_switch_window.py - handle Adw.ViewStack for cashbox
+# view_switch_window.py
 #
 # Copyright:
 #   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
@@ -29,8 +29,8 @@ dir1 = os.path.dirname(os.path.realpath(__file__))
 dir2 = os.path.dirname(dir1)
 sys.path.append(dir2)
 from cashbox.app import App
-from cashbox.utils import print_widget, reduce_window_size
-from cashbox.read_appargs import read_appargs, appargs
+from cashbox.utils import reduce_window_size
+from cashbox.read_appargs import appargs
 
 @Gtk.Template(filename=f"{dir1}/view_switch_window.ui")
 class ViewSwitchWindow(Adw.ApplicationWindow):
@@ -47,16 +47,15 @@ class ViewSwitchWindow(Adw.ApplicationWindow):
             reduce_window_size(self)
 
 if __name__ == '__main__':
-    import sys
-
     # not possible:
     #   class MyViewSwitchWindow(ViewSwitchWindow):
     # because:
-    #   TypeError: Inheritance from classes with @Gtk.Template decorators is not allowed at this time
+    #   TypeError: Inheritance from classes with @Gtk.Template decorators is not
+    #   allowed at this time
 
     class MyApp(App):
 
-        def on_visible_child_name(self, stack, b):
+        def on_visible_child_name(self, stack, _):
             print("on_visible_child_name: <%s>" % (stack.get_visible_child_name()))
 
         def on_activate(self, app):
@@ -67,7 +66,7 @@ if __name__ == '__main__':
                             margin_end=12, margin_bottom=12,margin_start=12,spacing=12)
                 win.stack.add_titled(box, "name-%s"%i, "Title %s"%i)
 
-                l=Gtk.Label(label="Label %s"%i)
+                l=Gtk.Label(label="Label {i}")
                 box.append(l)
             win.present()
 
