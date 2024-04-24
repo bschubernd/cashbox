@@ -26,6 +26,37 @@ not experienced in memorizing prices and doing mental arithmetic.
 
 4. present cost of articles and calculate change
 
+## testing cashbox version 0.2
+
+Please download and install `cashbox_0.2_all.deb` or build it from source.
+Debian verison crimson or debian/trixie is needed on librem5.
+Steps below are shown as an example with user bs on host crimson.
+
+ * install binary:
+
+    bs@crimson:~$ wget https://salsa.debian.org/debian/cashbox/-/raw/main/bin/cashbox_0.2_all.deb
+    bs@crimson:~$ wget https://salsa.debian.org/debian/cashbox/-/raw/main/bin/cashbox.md5sums
+    bs@dev-trixie:~/src/cashbox/bin$ md5sum -c cashbox.md5sums
+    bs@crimson:~$ sudo dpkg -i cashbox_0.2_all.deb 
+    # dependeny problems are fixed in last step
+
+ * build from source:
+
+    bs@crimson:~$ sudo apt install git devscripts
+    bs@crimson:~$ git clone https://salsa.debian.org/debian/cashbox.git
+    bs@crimson:~$ cd cashbox
+    bs@crimson:~/cashbox$ mk-build-deps ./src/debian/control
+    bs@crimson:~/cashbox$ sudo dpkg -i cashbox-build-deps_0.2_all.deb 
+    # dependency problems are fixed in next step
+
+ * fix dependency problems (without upgrading other packages):
+
+    bs@crimson:~$ echo "deb http://ftp.de.debian.org/debian trixie main" | sudo tee /etc/apt/sources.list.d/trixie.list
+    bs@crimson:~$ sudo apt update
+    bs@crimson:~$ sudo apt --fix-broken install
+    bs@crimson:~$ sudo rm /etc/apt/sources.list.d/trixie.list
+    bs@crimson:~$ sudo apt update
+
 ## pictures
 
 ![about cashbox](pics/about.png)
@@ -45,3 +76,4 @@ not experienced in memorizing prices and doing mental arithmetic.
 ![receipt sum](pics/receipt-sum.png)
 
 ![receipt show return](pics/receipt-show-return.png)
+
