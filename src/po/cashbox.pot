@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 15:27+0200\n"
+"POT-Creation-Date: 2024-04-24 10:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cashbox.py:56 dialog_widget.py:60
+#: cashbox.py:57 dialog_widget.py:60
 msgid "Pricelist"
 msgstr ""
 
-#: cashbox.py:64 dialog_widget.py:62
+#: cashbox.py:65 dialog_widget.py:62
 msgid "Sale"
 msgstr ""
 
-#: cashbox.py:71 dialog_widget.py:61
+#: cashbox.py:72 dialog_widget.py:61
 msgid "Receipt"
 msgstr ""
 
@@ -113,40 +113,40 @@ msgid ""
 "{d.As} can be listed with {d.n} and {d.p} in {d.Pl}."
 msgstr ""
 
-#: pricelist_widget.py:159
+#: pricelist_widget.py:157
 #, python-brace-format
 msgid "name {name_to_long} chars to long"
 msgstr ""
 
-#: pricelist_widget.py:162
+#: pricelist_widget.py:160
 msgid "name already exists"
 msgstr ""
 
-#: pricelist_widget.py:168
+#: pricelist_widget.py:166
 msgid "no space after article name"
 msgstr ""
 
-#: pricelist_widget.py:170
+#: pricelist_widget.py:168
 msgid "no article name"
 msgstr ""
 
-#: pricelist_widget.py:175
+#: pricelist_widget.py:173
 msgid "bad optional count"
 msgstr ""
 
-#: pricelist_widget.py:178
+#: pricelist_widget.py:176
 msgid "no price found"
 msgstr ""
 
-#: pricelist_widget.py:207
+#: pricelist_widget.py:204
 msgid "please add lines with article and price"
 msgstr ""
 
-#: pricelist_widget.py:293
+#: pricelist_widget.py:287
 msgid "pricelist workflow"
 msgstr ""
 
-#: pricelist_widget.py:293
+#: pricelist_widget.py:287
 #, python-brace-format
 msgid ""
 "{d.As} are listed in a text with {d.n} and {d.p} and an optional {d.c} in {d."
@@ -164,11 +164,11 @@ msgid ""
 "the needed syntax."
 msgstr ""
 
-#: pricelist_widget.py:310
+#: pricelist_widget.py:304
 msgid "pricelist syntax"
 msgstr ""
 
-#: pricelist_widget.py:310
+#: pricelist_widget.py:304
 #, python-brace-format
 msgid ""
 "{d.Pl} mainly consists of a large text field, where a line can represents an "

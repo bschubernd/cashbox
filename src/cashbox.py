@@ -23,6 +23,7 @@
 #   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
 import sys, gi, os
+gi.require_version('Gtk', '4.0')
 gi.require_version(namespace='Adw', version='1')
 from gi.repository import Gtk
 sys.path.append("/usr/share/cashbox/python3")

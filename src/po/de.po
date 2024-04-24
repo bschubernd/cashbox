@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gtk 4-python\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 15:27+0200\n"
+"POT-Creation-Date: 2024-04-24 10:03+0200\n"
 "PO-Revision-Date: 2024-04-19 09:58+0200\n"
 "Last-Translator: Bernd Schumacher <bernd@bschu.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: cashbox.py:56 dialog_widget.py:60
+#: cashbox.py:57 dialog_widget.py:60
 msgid "Pricelist"
 msgstr "Preisliste"
 
-#: cashbox.py:64 dialog_widget.py:62
+#: cashbox.py:65 dialog_widget.py:62
 msgid "Sale"
 msgstr "Verkauf"
 
-#: cashbox.py:71 dialog_widget.py:61
+#: cashbox.py:72 dialog_widget.py:61
 msgid "Receipt"
 msgstr "Quittung"
 
@@ -124,40 +124,40 @@ msgstr ""
 "eins zwei drei\n"
 "{d.As} können mit {d.n} und {d.p} in {d.Pl} gelistet werden."
 
-#: pricelist_widget.py:159
+#: pricelist_widget.py:157
 #, python-brace-format
 msgid "name {name_to_long} chars to long"
 msgstr "Name ist {name_to_long} Zeichen zu lang"
 
-#: pricelist_widget.py:162
+#: pricelist_widget.py:160
 msgid "name already exists"
 msgstr "Name existiert bereits"
 
-#: pricelist_widget.py:168
+#: pricelist_widget.py:166
 msgid "no space after article name"
 msgstr "Leerzeichen fehlt hinter Name"
 
-#: pricelist_widget.py:170
+#: pricelist_widget.py:168
 msgid "no article name"
 msgstr "Artikel Name fehlt"
 
-#: pricelist_widget.py:175
+#: pricelist_widget.py:173
 msgid "bad optional count"
 msgstr "Optionale Anzahl fehlerhaft"
 
-#: pricelist_widget.py:178
+#: pricelist_widget.py:176
 msgid "no price found"
 msgstr "Kein Preis gefunden"
 
-#: pricelist_widget.py:207
+#: pricelist_widget.py:204
 msgid "please add lines with article and price"
 msgstr "Bitte Zeilen mit Artikel Name und Preis hinzufügen"
 
-#: pricelist_widget.py:293
+#: pricelist_widget.py:287
 msgid "pricelist workflow"
 msgstr "Preislisten Ablauf"
 
-#: pricelist_widget.py:293
+#: pricelist_widget.py:287
 #, python-brace-format
 msgid ""
 "{d.As} are listed in a text with {d.n} and {d.p} and an optional {d.c} in {d."
@@ -189,11 +189,11 @@ msgstr ""
 "Der Text kann dann in die {d.Pl} geladen werden. Dann kann der Text mit Copy "
 "und Paste in den benötigten Syntax gebracht werden."
 
-#: pricelist_widget.py:310
+#: pricelist_widget.py:304
 msgid "pricelist syntax"
 msgstr "Preislisten Syntax"
 
-#: pricelist_widget.py:310
+#: pricelist_widget.py:304
 #, python-brace-format
 msgid ""
 "{d.Pl} mainly consists of a large text field, where a line can represents an "

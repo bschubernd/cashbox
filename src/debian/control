@@ -19,7 +19,9 @@ Depends:
  ${misc:Depends},
  ${python3:Depends},
  python3,
- python3-gi
+ python3-gi (>=3.47),
+ libgtk-4-bin (>=4.12.5),
+ libadwaita-1-0 (>1.4)
 Description: cashbox - memorise cost and calculate price of articles
  cashbox memorises the cost of articles and calculates the total price and
  change. It is intended for small clubs on a celebration, where members are
