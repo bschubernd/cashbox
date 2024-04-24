@@ -34,31 +34,39 @@ Steps below are shown as an example with user bs on host crimson.
 
  * install binary:
 
+    ```console
     bs@crimson:~$ wget https://salsa.debian.org/debian/cashbox/-/raw/main/bin/cashbox_0.2_all.deb
     bs@crimson:~$ wget https://salsa.debian.org/debian/cashbox/-/raw/main/bin/cashbox.md5sums
     bs@crimson:~$ md5sum -c cashbox.md5sums # expected: cashbox_0.2_all.deb: OK
-    bs@crimson:~$ sudo dpkg -i cashbox_0.2_all.deb 
-    # please fix dependency problems from install as shown in last step
-
+    bs@crimson:~$ sudo dpkg -i cashbox_0.2_all.deb
+    ```
+    please fix dependency problems from install as shown in last step
+   
  * build from source:
 
+    ``` console
     bs@crimson:~$ sudo apt install git devscripts
     bs@crimson:~$ git clone https://salsa.debian.org/debian/cashbox.git
     bs@crimson:~$ cd cashbox
     bs@crimson:~/cashbox$ mk-build-deps ./src/debian/control
-    bs@crimson:~/cashbox$ sudo dpkg -i cashbox-build-deps_0.2_all.deb 
-    # please fix dependency problems from build as shown in next step now
+    bs@crimson:~/cashbox$ sudo dpkg -i cashbox-build-deps_0.2_all.deb
+    ``` 
+    please fix dependency problems from build as shown in next step now
+    ``` console
     bs@crimson:~/cashbox$ make
     bs@crimson:~/cashbox$ sudo dpkg -i cashbox_0.2_all.deb 
-    # please fix dependency problems from install as shown in next step
+    ```
+    please fix dependency problems from install as shown in next step
 
  * fix dependency problems (without upgrading other packages):
 
+    ``` console
     bs@crimson:~$ echo "deb http://ftp.de.debian.org/debian trixie main" | sudo tee /etc/apt/sources.list.d/trixie.list
     bs@crimson:~$ sudo apt update
     bs@crimson:~$ sudo apt --fix-broken install
     bs@crimson:~$ sudo rm /etc/apt/sources.list.d/trixie.list
     bs@crimson:~$ sudo apt update
+    ```
 
 ## pictures
 
