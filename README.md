@@ -36,9 +36,9 @@ Steps below are shown as an example with user bs on host crimson.
 
     bs@crimson:~$ wget https://salsa.debian.org/debian/cashbox/-/raw/main/bin/cashbox_0.2_all.deb
     bs@crimson:~$ wget https://salsa.debian.org/debian/cashbox/-/raw/main/bin/cashbox.md5sums
-    bs@dev-trixie:~/src/cashbox/bin$ md5sum -c cashbox.md5sums
+    bs@crimson:~$ md5sum -c cashbox.md5sums # expected: cashbox_0.2_all.deb: OK
     bs@crimson:~$ sudo dpkg -i cashbox_0.2_all.deb 
-    # dependeny problems are fixed in last step
+    # please fix dependency problems from install as shown in last step
 
  * build from source:
 
@@ -47,7 +47,10 @@ Steps below are shown as an example with user bs on host crimson.
     bs@crimson:~$ cd cashbox
     bs@crimson:~/cashbox$ mk-build-deps ./src/debian/control
     bs@crimson:~/cashbox$ sudo dpkg -i cashbox-build-deps_0.2_all.deb 
-    # dependency problems are fixed in next step
+    # please fix dependency problems from build as shown in next step now
+    bs@crimson:~/cashbox$ make
+    bs@crimson:~/cashbox$ sudo dpkg -i cashbox_0.2_all.deb 
+    # please fix dependency problems from install as shown in next step
 
  * fix dependency problems (without upgrading other packages):
 
