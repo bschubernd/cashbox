@@ -5,3 +5,4 @@ cashbox_*_amd64.buildinfo
 cashbox_*_amd64.changes
 cashbox_*.dsc
 cashbox_*.tar.xz
+new_debian_release.log

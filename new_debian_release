@@ -1,0 +1,120 @@
+#!/bin/sh
+PKG=cashbox
+set -e
+export LANG=C
+export ia_logfile="$0.log"
+rm -f "$ia_logfile"
+. /usr/share/shellia/ia
+
+getinfo()
+{
+  V="$(head -1 src/debian/changelog |
+    sed "s/^.*(\(.*\)).*$/\1/" |
+    sed "s/~.*$//" # tags do not allow ~
+  )"
+  TAG="debian_version_$(echo "$V" | sed "s/\./_/g" # change . to _
+  )"
+  COMMIT="$(git log | head -1 | sed -n "s/^commit //p")"
+}
+
+mytag()
+{
+  eval "$ia_init"
+  ia_stdout "^Updated tag"
+  ia_add "git tag -f \"$TAG\" \"$COMMIT\""
+  ia -c
+}
+
+mybuild()
+{
+  eval "$ia_init"
+  ia_add "rm -rf /usr/local/src/Packages/${PKG}/"
+  ia_add "sudo mkdir -p \"/usr/local/src/Packages\""
+  ia_add "sudo chown bs \"/usr/local/src/Packages\""
+  ia_add "mkdir -p \"/usr/local/src/Packages/${PKG}/$TAG\""
+  ia_add "cd \"/usr/local/src/Packages/${PKG}/$TAG\""
+  ia_ignore "^X11 forwarding request failed on"
+  ia_stdout "^Cloning into"
+  ia_add "git clone git@salsa.debian.org:debian/${PKG}.git"
+  ia_add "cd ${PKG}"
+  ia_add "git checkout --quiet \"$TAG\""
+  ia_add "cd src"
+  ia_nocheck
+  ia_add "debuild --lintian-opts -i -- binary"
+  ia -c
+}
+
+mysourcebuild()
+{
+  eval "$ia_init"
+  ia_add "rm -rf /usr/local/src/Packages/${PKG}/"
+  ia_add "mkdir -p \"/usr/local/src/Packages/${PKG}/$TAG\""
+  ia_add "cd \"/usr/local/src/Packages/${PKG}/$TAG\""
+  ia_ignore "^X11 forwarding request failed on"
+  ia_stdout "^Cloning into"
+  ia_add "git clone git@salsa.debian.org:debian/${PKG}.git"
+  ia_add "cd ${PKG}"
+  ia_add "git checkout --quiet \"$TAG\""
+  ia_add "cd src"
+  ia_nocheck
+  ia_add "dpkg-buildpackage -S"
+  ia_add "cd \"/usr/local/src/Packages/${PKG}/$TAG/${PKG}\""
+  ia_add "debsign ${PKG}_${V}_source.changes"
+  ia -c
+}
+
+myupload()
+{
+  eval "$ia_init"
+
+  ia_add "cd \"/usr/local/src/Packages/${PKG}/$TAG/${PKG}\""
+  ia_nocheck
+  ia_add "dput $* ${PKG}*.changes"
+  ia -c
+}
+
+check_on_sid()
+{
+  eval "$ia_init"
+  ia_add "[ \"$SID\" ] || SID=bootcd-sid" # we assume a kvm called bootcd-sid exists
+  ia_add "[ \"\$(sudo virsh list | grep \"\<sid\>\")\" ] || echo \"please start $<SID>\""
+  ia_add "ssh $<SID> \"rm -rf /tmp/${PKG}; mkdir /tmp/${PKG}\""
+  ia_add "scp /usr/local/src/Packages/${PKG}/*/${PKG}/${PKG}*xz $<SID>:/tmp/${PKG}"
+  ia_add "ssh $<SID> \"cd /tmp/${PKG}; tar xf ${PKG}*xz\""
+  ia_nocheck
+  ia_add "ssh $<SID> \"cd /tmp/${PKG}/src; dpkg-buildpackage -us -uc -b --buildinfo-id=amd64\""
+  ia -c
+}
+
+eval "$ia_init"
+ia_nocheck
+ia_add "[ \"$(hostname)\" = \"dev-trixie\" ] || ia_exiterr 10 \"ERROR: Please run on dev-trixie\""
+ia_stdout "^\s*dpkg-buildpackage"
+ia_stdout "^\s*dh(( |_)clean|_testdir|_auto_clean)"
+ia_stdout "^\s*(fakeroot|make)"
+ia_add "make clobber"
+ia_stdout "^Untracked files:$"
+ia_add "git status | grep -e modified -e \"Changes to be committed:\" -e \"Untracked files:\" || :"
+ia_add "getinfo"
+ia_nocheck
+ia_add "mytag <-i>"
+ia_ignore "^X11 forwarding request failed on"
+ia_stdout "^Everything up-to-date"
+ia_add "git push"
+ia_ignore "^X11 forwarding request failed on"
+ia_stdout "^To "
+ia_stdout "^ \* "
+ia_stdout "^Everything up-to-date"
+ia_stdout "\(forced update\)"
+ia_add "git push origin --tags --force # check with: git ls-remote --tags"
+ia_nocheck
+ia_add "mybuild <-i>"
+ia_nocheck
+ia_add "check_on_sid <-i>"
+ia_nocheck
+ia_add "mysourcebuild <-i>"
+ia_nocheck
+ia_add "myupload <-i> --simulate"
+ia_nocheck
+ia_add "myupload <-i>"
+ia -c
