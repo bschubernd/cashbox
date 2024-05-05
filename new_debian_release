@@ -46,7 +46,12 @@ mybuild()
 
 mysourcebuild()
 {
+  local full
+  full=""
   eval "$ia_init"
+  if [ "$1" = "--full" ]; then
+    full="$1"
+  fi
   ia_add "rm -rf /usr/local/src/Packages/${PKG}/"
   ia_add "mkdir -p \"/usr/local/src/Packages/${PKG}/$TAG\""
   ia_add "cd \"/usr/local/src/Packages/${PKG}/$TAG\""
@@ -57,7 +62,7 @@ mysourcebuild()
   ia_add "git checkout --quiet \"$TAG\""
   ia_add "cd src"
   ia_nocheck
-  ia_add "dpkg-buildpackage -S"
+  [ "$full" ] && ia_add "dpkg-buildpackage" || ia_add "dpkg-buildpackage -S"
   ia_add "cd \"/usr/local/src/Packages/${PKG}/$TAG/${PKG}\""
   ia_add "debsign ${PKG}_${V}_source.changes"
   ia -c
@@ -117,4 +122,7 @@ ia_nocheck
 ia_add "myupload <-i> --simulate"
 ia_nocheck
 ia_add "myupload <-i>"
+ia_add "exit"
+ia_nocheck
+ia_add "mysourcebuild <-i> --full"
 ia -c
