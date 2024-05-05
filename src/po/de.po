@@ -1,17 +1,27 @@
-# German translations for gtk package
-# German translation for gtk.
-# Copyright (C) 2024 THE gtk'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the gtk package.
-# Bernd Schumacher <bernd@bschu.de>, 2024.
+# de.po
 #
+# Copyright:
+#   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
+#
+# License: GPL-3.0+
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#   .
+#   This package is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#   .
+#   You should have received a copy of the GNU General Public License
+#   along with this program. If not, see <https://www.gnu.org/licenses/>.
+# Comment:
+#   On Debian systems, the complete text of the GNU General
+#   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
 msgid ""
 msgstr ""
-"Project-Id-Version: gtk 4-python\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-24 10:03+0200\n"
-"PO-Revision-Date: 2024-04-19 09:58+0200\n"
-"Last-Translator: Bernd Schumacher <bernd@bschu.de>\n"
-"Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +58,7 @@ msgstr ""
 "{d.C} besteht aus den 3 Fenstern {d.Pl}, {d.S} und {d.R}, die beliebig "
 "gewechselt werden können. Mit {d.Pl} können {d.as_} hinzugefügt, gelöscht "
 "oder geänder werden, mit {d.S} können {d.as_} zum Verkauf ausgewählt werden "
-"und {d.R} zeigt den Gesamtpres der ausgewählten {d.as_}."
+"und {d.R} zeigt den Gesamtpreis der ausgewählten {d.as_}."
 
 #: article.py:107
 msgid "select article"
@@ -209,7 +219,7 @@ msgstr ""
 "Die {d.Pl} besteht aus einem Text in dem jede Zeile einen {d.a} "
 "repräsentiert. Zeilen können auch leer sein oder einen Kommentar enthalten.\n"
 "\n"
-"Eine Zeile mit einem {d.a} enhtlält einen {d.n} und einen {d.p} und optional "
+"Eine Zeile mit einem {d.a} enthält einen {d.n} und einen {d.p} und optional "
 "einen {d.c} getrennt durch Leerzeichen. Zeilen die mit einem '#' beginnen "
 "sind Kommentare. \n"
 "\n"
@@ -229,7 +239,7 @@ msgid ""
 "the selected {d.a} {d.cs} will be resetted for the next customer."
 msgstr ""
 "In dem {d.R} Fenseter wird der zu zahlende {d.p} gezeigt. Das gezahlge Geld "
-"kann einggeben werden um das Rückgeld anzeigen zu lassen. Mit 'Ok' wird der "
+"kann eingegeben werden um das Rückgeld anzeigen zu lassen. Mit 'Ok' wird der "
 "Verkauf gespeichert und die ausgewählten {d.a} {d.cs} werden für den "
 "nächsten Kunden zurückgesetzt."
 
@@ -262,23 +272,23 @@ msgstr ""
 msgid "cashbox"
 msgstr "cashbox - Geldkasette"
 
-#: edit_pricelist_widget.ui:37 pricelist_widget.ui:42
+#: pricelist_widget.ui:42
 msgid "File"
 msgstr "Datei"
 
-#: edit_pricelist_widget.ui:39 pricelist_widget.ui:44
+#: pricelist_widget.ui:44
 msgid "Load"
 msgstr "Laden"
 
-#: edit_pricelist_widget.ui:44 pricelist_widget.ui:49
+#: pricelist_widget.ui:49
 msgid "Append"
 msgstr "Anfügen"
 
-#: edit_pricelist_widget.ui:49 pricelist_widget.ui:54
+#: pricelist_widget.ui:54
 msgid "Save"
 msgstr "Speichern"
 
-#: edit_pricelist_widget.ui:55 pricelist_widget.ui:60
+#: pricelist_widget.ui:60
 msgid "Undo"
 msgstr "Ungetan machen"
 

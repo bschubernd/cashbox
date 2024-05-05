@@ -1,7 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: <url://example.com>
+Source: https://salsa.debian.org/debian/cashbox
 Upstream-Name: cashbox
-Upstream-Contact: <preferred name and address to reach the upstream project>
 
 Files:
  *

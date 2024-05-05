@@ -1,18 +1,27 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# cashbox.pot
 #
-#, fuzzy
+# Copyright:
+#   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
+#
+# License: GPL-3.0+
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#   .
+#   This package is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#   .
+#   You should have received a copy of the GNU General Public License
+#   along with this program. If not, see <https://www.gnu.org/licenses/>.
+# Comment:
+#   On Debian systems, the complete text of the GNU General
+#   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-24 10:03+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -215,23 +224,23 @@ msgstr ""
 msgid "cashbox"
 msgstr ""
 
-#: edit_pricelist_widget.ui:37 pricelist_widget.ui:42
+#: pricelist_widget.ui:42
 msgid "File"
 msgstr ""
 
-#: edit_pricelist_widget.ui:39 pricelist_widget.ui:44
+#: pricelist_widget.ui:44
 msgid "Load"
 msgstr ""
 
-#: edit_pricelist_widget.ui:44 pricelist_widget.ui:49
+#: pricelist_widget.ui:49
 msgid "Append"
 msgstr ""
 
-#: edit_pricelist_widget.ui:49 pricelist_widget.ui:54
+#: pricelist_widget.ui:54
 msgid "Save"
 msgstr ""
 
-#: edit_pricelist_widget.ui:55 pricelist_widget.ui:60
+#: pricelist_widget.ui:60
 msgid "Undo"
 msgstr ""
 

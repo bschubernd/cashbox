@@ -1,3 +1,10 @@
+cashbox (0.3) unstable; urgency=medium
+
+  * fixed copyright information for all files in debian/copyright
+  * fixed typos
+
+ -- Bernd Schumacher <bernd@bschu.de>  Sun, 05 May 2024 09:07:44 +0200
+
 cashbox (0.2) unstable; urgency=medium
 
   * Initial release. closes: #1069879
