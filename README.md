@@ -32,21 +32,4 @@ cashbox can now be installed from debian (https://packages.debian.org/cashbox)
 
 ## pictures
 
-![about cashbox](pics/about.png)
-
-![about cashbox details](pics/about-details.png)
-
-![pricelist empty](pics/pricelist-empty.png)
-
-![pricelist help workflow](pics/pricelist-help-workflow.png)
-
-![pricelist with data](pics/pricelist-correct.png)
-
-![sale select](pics/Sale-select.png)
-
-![sale inclrease count ](pics/sale-increase-count.png)
-
-![receipt sum](pics/receipt-sum.png)
-
-![receipt show return](pics/receipt-show-return.png)
-
+some screenshots will be available at debian (https://packages.debian.org/cashbox)
