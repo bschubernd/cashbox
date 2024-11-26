@@ -54,7 +54,7 @@ def init_appargs():
 
     # set default opts
     appargs["application_id"] = "de.bschu.cashbox"
-    appargs["application_version"] = "0.3"
+    appargs["application_version"] = "0.3.1"
     appargs["user_app_dir"] = os.path.join(GLib.get_user_data_dir(), appargs.application_id)
     appargs["system_app_dir"] = os.path.join("/", "usr", "share", "cashbox")
     appargs["csspath"] = os.path.join(appargs.system_app_dir, "cashbox.css")

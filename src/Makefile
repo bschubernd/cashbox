@@ -64,5 +64,6 @@ p: $(UIS)
 	mkdir -p po/locale/de/LC_MESSAGES
 	msgfmt po/de.po -o po/locale/de/LC_MESSAGES/cashbox.mo
 
-%.ui : %.blp
-	blueprint-compiler compile $< >$@
+# temporarily disabled: (see changelog 0.3.1)
+# %.ui : %.blp
+#	blueprint-compiler compile $< >$@

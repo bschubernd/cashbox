@@ -1,3 +1,11 @@
+cashbox (0.3.1) unstable; urgency=medium
+
+  * build without blueprint-compiler, (as long as blueprint-compiler
+    bug 1084500 will be fixed)
+  * fix spelling errors
+
+ -- Bernd Schumacher <bernd@bschu.de>  Tue, 26 Nov 2024 08:27:48 +0100
+
 cashbox (0.3) unstable; urgency=medium
 
   * fixed copyright information for all files in debian/copyright
