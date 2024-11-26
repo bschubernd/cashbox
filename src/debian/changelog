@@ -1,3 +1,9 @@
+cashbox (0.3.2) unstable; urgency=medium
+
+  * nothing new, only fix 0.3.1
+
+ -- Bernd Schumacher <bernd@bschu.de>  Tue, 26 Nov 2024 10:00:54 +0100
+
 cashbox (0.3.1) unstable; urgency=medium
 
   * build without blueprint-compiler, (as long as blueprint-compiler
