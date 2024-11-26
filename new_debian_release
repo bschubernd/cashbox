@@ -64,7 +64,8 @@ mysourcebuild()
   ia_nocheck
   [ "$full" ] && ia_add "dpkg-buildpackage" || ia_add "dpkg-buildpackage -S"
   ia_add "cd \"/usr/local/src/Packages/${PKG}/$TAG/${PKG}\""
-  ia_add "debsign ${PKG}_${V}_*.changes"
+  ia_stdout "^Leaving current signature unchanged\.$"
+  ia_add "debsign --no-re-sign ${PKG}_${V}_*.changes"
   ia -c
 }
 
