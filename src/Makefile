@@ -3,22 +3,26 @@
 #     license: GNU General Public License, version 3
 # description: build cashbox package
 
-LIBS   = $(shell ls *py | grep -v cashbox.py)
-UIS    = $(shell ls *blp | sed -e "s/blp$$/ui/")
-SHARE  = $(DESTDIR)/usr/share/cashbox
-PYTHON = $(DESTDIR)/usr/share/cashbox/python3/cashbox
-BIN    = $(DESTDIR)/usr/bin
-APPL   = $(DESTDIR)/usr/share/applications
-SVG    = $(DESTDIR)/usr/share/icons/hicolor/scalable/apps
-MIME   = $(DESTDIR)/usr/share/mime/packages
-MODIR  = $(DESTDIR)/usr/share/locale
-MO     = de
-UTF    = "de_DE.UTF-8 us_US.UTF-8"
-MO1	   = $(shell for i in $(MO); do echo "$${i}/LC_MESSAGES/cashbox.mo"; done)
-MO2	   = $(shell for i in $(MO1); do echo "po/locale/$${i}"; done)
-
+ROOT    = $(shell [ "$(FLATPAK_DEST)" ] && echo $(shell whoami) || echo root)
+USR     = $(shell [ "$(FLATPAK_DEST)" ] && echo $(FLATPAK_DEST) || echo /usr)
+LIBS    = $(shell ls *py | grep -v cashbox.py)
+UIS     = $(shell ls *blp | sed -e "s/blp$$/ui/")
+SHARE   = $(DESTDIR)$(USR)/share/cashbox
+PYTHON  = $(DESTDIR)$(USR)/share/cashbox/python3/cashbox
+BIN     = $(DESTDIR)$(USR)/bin
+APPL    = $(DESTDIR)$(USR)/share/applications
+SVG     = $(DESTDIR)$(USR)/share/icons/hicolor/scalable/apps
+MIME    = $(DESTDIR)$(USR)/share/mime/packages
+MODIR   = $(DESTDIR)$(USR)/share/locale
+MO      = de
+UTF     = "de_DE.UTF-8 us_US.UTF-8"
+MO1	= $(shell for i in $(MO); do echo "$${i}/LC_MESSAGES/cashbox.mo"; done)
+MO2	= $(shell for i in $(MO1); do echo "po/locale/$${i}"; done)
 
 all: $(UIS) $(MO2)
+
+t:
+	echo "USR=<$(USR)>"
 
 clean:
 
@@ -27,21 +31,21 @@ install: install-libs install-bin install-mo
 install-libs: $(LIBS) $(UIS)
 	@mkdir -p $(PYTHON); \
 	for i in $^; do \
-	    install -o root -g root -m 0644 $$i $(PYTHON)/; \
+	    install -o $(ROOT) -g $(ROOT) -m 0644 $$i $(PYTHON)/; \
 	done
 
 install-bin: cashbox.py
 	@mkdir -p $(BIN) $(APPL) $(SVG) $(MIME) $(SHARE)
-	@install -o root -g root -m 0755 cashbox.py $(BIN)/cashbox
-	@install -o root -g root -m 0644 de.bschu.cashbox.desktop $(APPL)
-	@install -o root -g root -m 0644 de.bschu.cashbox.svg $(SVG)
-	@install -o root -g root -m 0644 cashbox.xml $(MIME)
-	@install -o root -g root -m 0644 cashbox.css $(SHARE)
+	@install -o $(ROOT) -g $(ROOT) -m 0755 cashbox.py $(BIN)/cashbox
+	@install -o $(ROOT) -g $(ROOT) -m 0644 de.bschu.cashbox.desktop $(APPL)
+	@install -o $(ROOT) -g $(ROOT) -m 0644 de.bschu.cashbox.svg $(SVG)
+	@install -o $(ROOT) -g $(ROOT) -m 0644 cashbox.xml $(MIME)
+	@install -o $(ROOT) -g $(ROOT) -m 0644 cashbox.css $(SHARE)
 
 install-mo: $(MO2)
 	@for i in $(MO1); do \
 	   mkdir -p $$(dirname $(MODIR)/$${i}); \
-	   install -o root -g root -m 0644 po/locale/$${i} $(MODIR)/$${i}; \
+	   install -o $(ROOT) -g $(ROOT) -m 0644 po/locale/$${i} $(MODIR)/$${i}; \
 	done
 
 po/cashbox.pot: cashbox.py $(LIBS) $(UIS)

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # cashbox.py
 #
@@ -26,7 +26,15 @@ import sys, gi, os
 gi.require_version('Gtk', '4.0')
 gi.require_version(namespace='Adw', version='1')
 from gi.repository import Gtk
-sys.path.append("/usr/share/cashbox/python3")
+
+dir1 = os.path.dirname(os.path.realpath(__file__))
+dirp = os.path.basename(dir1)
+dir2 = os.path.dirname(dir1)
+if dirp == "bin":
+    sys.path.append(os.path.join(dir2, 'share/cashbox/python3'))
+if dirp == "decision":
+    sys.path.append(dir2)
+
 from cashbox.pick_widget import PickWidget
 from cashbox.article import Article, Sale
 from cashbox.sale_widget import SaleWidget
