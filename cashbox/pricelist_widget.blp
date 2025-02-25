@@ -1,0 +1,129 @@
+// pricelist_widget.blp
+//
+// Copyright:
+//   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
+//
+// License: GPL-3.0+
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
+//   .
+//   This package is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+//   .
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, see <https://www.gnu.org/licenses/>.
+// Comment:
+//   On Debian systems, the complete text of the GNU General
+//   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+using Gtk 4.0;
+using Adw 1;
+
+template $PricelistWidget : Gtk.Box {
+  orientation: vertical;
+
+  map => $on_map_all();
+
+  unmap => $on_unmap_all();
+
+  Gtk.Box {
+    MenuButton {
+      icon-name: "open-menu-symbolic";
+      menu-model: my_menu;
+    }
+    Gtk.ScrolledWindow {
+      hexpand: true;
+      Gtk.Label error {
+      }
+    }
+  }
+
+  Gtk.ScrolledWindow {
+    vexpand: true;
+    Gtk.TextView textview {
+    }
+  }
+}
+
+menu my_menu {
+  submenu {
+    label: _("File");
+    item {
+      label: _("Load");
+      action: "win.load";
+      icon: "open-menu-symbolic";
+    }
+    item {
+      label: _("Append");
+      action: "win.append";
+      icon: "document-new-symbolic";
+    }
+    item {
+      label: _("Save");
+      action: "win.save";
+      icon: "document-new-symbolic";
+    }
+  }
+  item {
+    label: _("Undo");
+    action: "win.undo";
+    icon: "document-new-symbolic";
+  }
+  item {
+    label: _("Redo");
+    action: "win.redo";
+    icon: "document-new-symbolic";
+  }
+  submenu {
+    label: _("Help");
+    item {
+      label: _("About");
+      action: "app.about";
+      icon: "document-new-symbolic";
+    }
+    item {
+      label: _("Pricelist Workflow");
+      action: "win.help_workflow";
+      icon: "document-new-symbolic";
+    }
+    item {
+      label: _("Pricelist Syntax");
+      action: "win.help_syntax";
+      icon: "document-new-symbolic";
+    }
+  }
+}
+
+Gtk.FileFilter cashbox_file_filter {
+  name: "cashbox pricelists";
+  mime-types [
+    "application/cashbox",
+    "text/plain",
+  ]
+}
+
+Gtk.FileDialog file_dialog {
+  default-filter: cashbox_file_filter;
+}
+
+Gtk.TextTag red_tag {
+  background: "tomato";
+}
+
+Gtk.TextTag green_tag {
+  background: "lightgreen";
+}
+
+Gtk.TextTag orange_tag {
+  background: "orange";
+}
+
+
+// margin-start: 12; margin-end: 12;
+// margin-bottom: 12; margin-top: 12;
+// spacing: 12;
+// vexpand: true;

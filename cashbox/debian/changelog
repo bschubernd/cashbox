@@ -1,0 +1,26 @@
+cashbox (0.3.2) unstable; urgency=medium
+
+  * nothing new, only fix 0.3.1
+
+ -- Bernd Schumacher <bernd@bschu.de>  Tue, 26 Nov 2024 10:00:54 +0100
+
+cashbox (0.3.1) unstable; urgency=medium
+
+  * build without blueprint-compiler, (as long as blueprint-compiler
+    bug 1084500 will be fixed)
+  * fix spelling errors
+
+ -- Bernd Schumacher <bernd@bschu.de>  Tue, 26 Nov 2024 08:27:48 +0100
+
+cashbox (0.3) unstable; urgency=medium
+
+  * fixed copyright information for all files in debian/copyright
+  * fixed typos
+
+ -- Bernd Schumacher <bernd@bschu.de>  Sun, 05 May 2024 09:07:44 +0200
+
+cashbox (0.2) unstable; urgency=medium
+
+  * Initial release. closes: #1069879
+
+ -- Bernd Schumacher <bernd@bschu.de>  Wed, 10 Apr 2024 11:37:55 +0200

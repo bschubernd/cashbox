@@ -1,0 +1,7 @@
+files
+cashbox
+cashbox.postinst.debhelper
+cashbox.prerm.debhelper
+.debhelper
+cashbox.substvars
+debhelper-build-stamp

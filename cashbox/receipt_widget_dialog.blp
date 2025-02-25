@@ -1,0 +1,60 @@
+// receipt_widget.blp - used by receipt_widget.py
+//
+// Copyright:
+//   Copyright (C) 2024 Bernd Schumacher <bernd@bschu.de>
+//
+// License: GPL-3.0+
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
+//   .
+//   This package is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+//   .
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, see <https://www.gnu.org/licenses/>.
+// Comment:
+//   On Debian systems, the complete text of the GNU General
+//   Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+using Gtk 4.0;
+using Adw 1;
+
+// margin-start: 12; margin-end: 12;
+// margin-bottom: 12; margin-top: 12;
+// spacing: 12;
+// vexpand: true;
+
+template $ReceiptWidgetDialog: Gtk.Box {
+}
+
+Adw.Dialog statistic_dialog {
+  title: "statistic dialog";
+  Gtk.Box {
+    orientation: vertical;
+    spacing: 12;
+    margin-start: 12;
+    margin-end: 12;
+    Grid {
+      column-spacing: 12;
+
+      Label { layout { column: 0; row: 0; } label: _("session"); }
+      Label session { layout { column: 1; row: 0; } }
+
+      Label { layout { column: 0; row: 1; } label: _("sales"); }
+      Label sales { layout { column: 1; row: 1; } }
+
+      Label { layout { column: 0; row: 2; } label: _("revenue"); }
+      Label revenue { layout { column: 1; row: 2; } }
+    }
+
+    Gtk.Button { 
+      label: "Ok"; 
+      clicked => $on_statistic_dialog_end();
+    }
+  }
+}
+

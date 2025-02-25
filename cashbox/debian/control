@@ -1,0 +1,29 @@
+Source: cashbox
+Section: math
+Priority: optional
+Maintainer: Bernd Schumacher <bernd@bschu.de>
+Rules-Requires-Root: binary-targets
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3
+# temporarily disabled blueprint-compiler (see changelog 0.3.1)
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/debian/cashbox
+Vcs-Git: https://salsa.debian.org/debian/cashbox.git
+
+Package: cashbox
+Architecture: all
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ ${python3:Depends},
+ python3,
+ python3-gi (>=3.47),
+ libgtk-4-bin (>=4.12.5),
+ gir1.2-adw-1 (>=1.4),
+ libadwaita-1-0 (>1.4)
+Description: cashbox - memorise cost and calculate price of articles
+ cashbox memorises the cost of articles and calculates the total price and
+ change. It is intended for small clubs on a celebration, where members are
+ not experienced in memorizing prices and doing mental arithmetic.
