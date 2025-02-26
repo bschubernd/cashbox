@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=cashbox
-Type=Application
-Icon=de.bschu.cashbox
-Exec=cashbox
-Categories=GNOME;GTK;
-X-Purism-FormFactor=Workstation;Mobile;
-MimeType=application/cashbox;

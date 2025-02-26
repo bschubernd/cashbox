@@ -1,13 +1,4 @@
+__pycache__
 python-tags.vi
-cashbox_*_all.deb
-cashbox_*_amd64.build
-cashbox_*_amd64.buildinfo
-cashbox_*_amd64.changes
-cashbox_*.dsc
-cashbox_*.tar.xz
-new_debian_release.log
-cashbox.flatpak
-cashbox.flatpak-repo
-cashbox.flatpak-build
-cashbox.flatpak-state
-
+tmp
+debian.org

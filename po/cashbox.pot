@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-17 11:36+0100\n"
+"POT-Creation-Date: 2025-02-25 14:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cashbox.py:57 dialog_widget.py:60
+#: cashbox.py:83 dialog_widget.py:79
 msgid "Pricelist"
 msgstr ""
 
-#: cashbox.py:65 dialog_widget.py:62
+#: cashbox.py:92 dialog_widget.py:81
 msgid "Sale"
 msgstr ""
 
-#: cashbox.py:72 dialog_widget.py:61
+#: cashbox.py:100 dialog_widget.py:80
 msgid "Receipt"
 msgstr ""
 
-#: app.py:93
+#: app.py:171
 #, python-brace-format
 msgid ""
 "{d.C} memorises the cost of {d.as_} and calculates the total price and "
@@ -41,112 +41,112 @@ msgid ""
 "{d.as_} to sell and {d.R} shows the total price of the choosen {d.as_}."
 msgstr ""
 
-#: article.py:107
+#: article.py:146
 msgid "select article"
 msgstr ""
 
-#: dialog_widget.py:50
+#: dialog_widget.py:69
 msgid "article"
 msgstr ""
 
-#: dialog_widget.py:51
+#: dialog_widget.py:70
 msgid "articles"
 msgstr ""
 
-#: dialog_widget.py:52
+#: dialog_widget.py:71
 msgid "Articles"
 msgstr ""
 
-#: dialog_widget.py:53
+#: dialog_widget.py:72
 msgid "Cashbox"
 msgstr ""
 
-#: dialog_widget.py:54
+#: dialog_widget.py:73
 msgid "count"
 msgstr ""
 
-#: dialog_widget.py:55
+#: dialog_widget.py:74
 msgid "counts"
 msgstr ""
 
-#: dialog_widget.py:56
+#: dialog_widget.py:75
 msgid "name"
 msgstr ""
 
-#: dialog_widget.py:57
+#: dialog_widget.py:76
 msgid "names"
 msgstr ""
 
-#: dialog_widget.py:58
+#: dialog_widget.py:77
 msgid "price"
 msgstr ""
 
-#: dialog_widget.py:59
+#: dialog_widget.py:78
 msgid "prices"
 msgstr ""
 
-#: dialog_widget.py:92
+#: dialog_widget.py:110
 msgid "hallo"
 msgstr ""
 
-#: dialog_widget.py:106
+#: dialog_widget.py:125
 msgid "test_help_dialog"
 msgstr ""
 
-#: dialog_widget.py:110
+#: dialog_widget.py:129
 msgid "test_about"
 msgstr ""
 
-#: dialog_widget.py:117
+#: dialog_widget.py:137
 #, python-brace-format
 msgid "one two three {d.As}"
 msgstr ""
 
-#: dialog_widget.py:123
+#: dialog_widget.py:144
 msgid "test_title"
 msgstr ""
 
-#: dialog_widget.py:123
+#: dialog_widget.py:144
 #, python-brace-format
 msgid ""
 "one two three\n"
 "{d.As} can be listed with {d.n} and {d.p} in {d.Pl}."
 msgstr ""
 
-#: pricelist_widget.py:157
+#: pricelist_widget.py:207
 #, python-brace-format
 msgid "name {name_to_long} chars to long"
 msgstr ""
 
-#: pricelist_widget.py:160
+#: pricelist_widget.py:210
 msgid "name already exists"
 msgstr ""
 
-#: pricelist_widget.py:166
+#: pricelist_widget.py:216
 msgid "no space after article name"
 msgstr ""
 
-#: pricelist_widget.py:168
+#: pricelist_widget.py:218
 msgid "no article name"
 msgstr ""
 
-#: pricelist_widget.py:173
+#: pricelist_widget.py:225
 msgid "bad optional count"
 msgstr ""
 
-#: pricelist_widget.py:176
+#: pricelist_widget.py:228
 msgid "no price found"
 msgstr ""
 
-#: pricelist_widget.py:204
+#: pricelist_widget.py:259
 msgid "please add lines with article and price"
 msgstr ""
 
-#: pricelist_widget.py:287
+#: pricelist_widget.py:344
 msgid "pricelist workflow"
 msgstr ""
 
-#: pricelist_widget.py:287
+#: pricelist_widget.py:344
 #, python-brace-format
 msgid ""
 "{d.As} are listed in a text with {d.n} and {d.p} and an optional {d.c} in "
@@ -164,29 +164,29 @@ msgid ""
 "the needed syntax."
 msgstr ""
 
-#: pricelist_widget.py:304
+#: pricelist_widget.py:364
 msgid "pricelist syntax"
 msgstr ""
 
-#: pricelist_widget.py:304
+#: pricelist_widget.py:364
 #, python-brace-format
 msgid ""
 "{d.Pl} mainly consists of a large text field, where a line can represents an "
 "{d.a}. Lines can also be empty or contain a comment.\n"
 "\n"
 "A line with an {d.a} contains a {d.n} and {d.p} and an optional {d.c} "
-"separated by spaces. Lines starting with '#' are comments. \n"
+"separated by spaces. Lines starting with '#' are comments.\n"
 "\n"
 "The {d.p} consists of digits followed by '.' or ',' and 2 additional digits. "
 "Text before the {d.p} is the {d.n}. The {d.p} may be followed by digits that "
 "represents a {d.c} to show how often the {d.a} is currently sold."
 msgstr ""
 
-#: receipt_widget.py:114 receipt_widget.ui:111
+#: receipt_widget.py:140 receipt_widget.ui:111
 msgid "Receipt Help"
 msgstr ""
 
-#: receipt_widget.py:114
+#: receipt_widget.py:140
 #, python-brace-format
 msgid ""
 "In the {d.R} window the {d.p} to pay is shown. The paid amount can be "
@@ -194,11 +194,11 @@ msgid ""
 "the selected {d.a} {d.cs} will be resetted for the next customer."
 msgstr ""
 
-#: sale_widget.py:71 sale_widget.ui:41
+#: sale_widget.py:94 sale_widget.ui:41
 msgid "Sale Help"
 msgstr ""
 
-#: sale_widget.py:71
+#: sale_widget.py:94
 #, python-brace-format
 msgid ""
 "To sell {d.as_}, they can be selected from a drop down menu. They will then "

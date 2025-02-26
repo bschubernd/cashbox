@@ -53,7 +53,7 @@ except (ImportError, ValueError) as exc:
 class AttrDict(dict):
     """ access dictionary as attributes """
     application_id = "de.bschu.cashbox"
-    application_version = "0.3.2"
+    application_version = "0.3.3"
     max_name_len = 40
     conf_suffix = ".cshbx"
 
