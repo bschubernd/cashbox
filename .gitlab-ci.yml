@@ -8,7 +8,7 @@ variables:
 stages:
   - setup
   - build-x86_64
-# - build-aarch64
+  - build-aarch64
   - update-repo
   - deploy
 
