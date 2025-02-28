@@ -53,7 +53,8 @@ build-x86_64:
   extends: .setup
   script:
     # Build the app, ARCH should be host arch, BRANCH can be specified or if not it will default to master, see man flatpak-manifest > branch
-    - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
+    # - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
+    - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
   stage: build-x86_64
 
 build-aarch64:
@@ -61,7 +62,8 @@ build-aarch64:
     ARCH: aarch64
   extends: .setup
   script:
-    - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
+    # - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
+    - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
   stage: build-aarch64
   # https://docs.gitlab.com/ee/ci/runners/hosted_runners/linux.html#machine-types-available-for-linux---arm64
   tags:
@@ -78,7 +80,8 @@ update-repo:
   script:
     # The repo folder must have contents for both arches present, so they are chained one after another through dependencies
     # prune is run to keep the latest commit only
-    - flatpak build-update-repo --gpg-sign=${GPG_KEY_ID} --generate-static-deltas --prune repo
+    # - flatpak build-update-repo --gpg-sign=${GPG_KEY_ID} --generate-static-deltas --prune repo
+    - flatpak build-update-repo --generate-static-deltas --prune repo
 
 pages:
   variables:
