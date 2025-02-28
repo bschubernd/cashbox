@@ -62,7 +62,6 @@ build-aarch64:
     ARCH: aarch64
   extends: .setup
   script:
-    - flatpak uninstall --all -y
     - flatpak install -y org.gnome.Platform/x86_64/47 org.gnome.Sdk/x86_64/47
     - flatpak install -y org.gnome.Platform/aarch64/47 org.gnome.Sdk/aarch64/47
     # - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
