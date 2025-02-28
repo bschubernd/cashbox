@@ -8,7 +8,7 @@ variables:
 
 stages:
   - setup
-  - build-x86_64
+# - build-x86_64
   - build-aarch64
   - update-repo
   - deploy
@@ -74,7 +74,7 @@ update-repo:
   stage: update-repo
   image: ${DOCKER_IMAGE}
   dependencies:
-    - "build-x86_64"
+#   - "build-x86_64"
     - "build-aarch64"
   extends: .setup
   script:
