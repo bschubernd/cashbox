@@ -35,5 +35,6 @@ build-aarch64:
   artifacts:
     paths:
       - cashbox.${ARCH}.flatpak
+  environment: production
   tags:
     - arm64
