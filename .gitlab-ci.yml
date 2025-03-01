@@ -29,12 +29,10 @@ build-aarch64:
   extends: .setup
   script:
     - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
-    - echo flatpak build-bundle --gpg-sign=${GPG_KEY_ID} --arch=${ARCH} repo cashbox.${ARCH}.flatpak ${APP_ID}
     - flatpak build-bundle --gpg-sign=${GPG_KEY_ID} --arch=${ARCH} repo cashbox.${ARCH}.flatpak ${APP_ID}
   stage: build-aarch64
   artifacts:
     paths:
       - cashbox.${ARCH}.flatpak
-  environment: production
   tags:
     - arm64
