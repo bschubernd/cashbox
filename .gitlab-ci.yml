@@ -62,7 +62,8 @@ build-aarch64:
   extends: .setup
   script:
     - flatpak-builder build --arch=${ARCH} --user --install-deps-from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
-    - flatpak build-bundle --gpg-sign=${GPG_KEY_ID} --arch=${ARCH} repo cashbox.${ARCH}.flatpak $ID
+    - echo flatpak build-bundle --gpg-sign=${GPG_KEY_ID} --arch=${ARCH} repo cashbox.${ARCH}.flatpak ${APP_ID}
+    - flatpak build-bundle --gpg-sign=${GPG_KEY_ID} --arch=${ARCH} repo cashbox.${ARCH}.flatpak ${APP_ID}
   stage: build-aarch64
   # https://docs.gitlab.com/ee/ci/runners/hosted_runners/linux.html#machine-types-available-for-linux---arm64
   artifacts:
