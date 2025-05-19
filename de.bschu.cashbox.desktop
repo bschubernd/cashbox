@@ -3,6 +3,6 @@ Name=cashbox
 Type=Application
 Icon=de.bschu.cashbox
 Exec=cashbox
-Categories=GNOME;GTK;
+Categories=GNOME;GTK;Utility;Math
 X-Purism-FormFactor=Workstation;Mobile;
 MimeType=application/cashbox;

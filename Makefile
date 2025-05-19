@@ -54,7 +54,7 @@ install-bin: cashbox.py
 	@install -o $(ROOT) -g $(ROOT) -m 0755 cashbox.py $(BIN)/cashbox
 	@install -o $(ROOT) -g $(ROOT) -m 0644 de.bschu.cashbox.desktop $(APPL)
 	@install -o $(ROOT) -g $(ROOT) -m 0644 de.bschu.cashbox.svg $(SVG)
-	@install -o $(ROOT) -g $(ROOT) -m 0644 cashbox.xml $(MIME)
+	@install -o $(ROOT) -g $(ROOT) -m 0644 de.bschu.cashbox.xml $(MIME)
 	@install -o $(ROOT) -g $(ROOT) -m 0644 cashbox.css $(SHARE)
 	@install -o $(ROOT) -g $(ROOT) -m 0644 de.bschu.cashbox.metainfo.xml $(META)
 

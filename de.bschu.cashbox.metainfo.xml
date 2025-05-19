@@ -29,6 +29,20 @@
     </release>
   </releases>
   <launchable type="desktop-id">de.bschu.cashbox.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://github.com/bschubernd/cashbox/blob/main/screenshots/pricelist.png</image>
+      <caption>entering pricelist</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/bschubernd/cashbox/blob/main/screenshots/sale.png</image>
+      <caption>selecting articles</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/bschubernd/cashbox/blob/main/screenshots/receipt.png</image>
+      <caption>caclulating receipt</caption>
+    </screenshot>
+  </screenshots>
   <developer id="de.bschu">
     <name>Bernd Schumacher</name>
   </developer>
